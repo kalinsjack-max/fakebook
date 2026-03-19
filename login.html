@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FakeBook - Log In or Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #eceff5;
+            color: #000;
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        /* M-Basic Header */
+        .fb-header {
+            background-color: #3b5998;
+            padding: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .fb-logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: -1px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn-green-header {
+            background-color: #69a74e;
+            color: white;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 2px;
+        }
+
+        /* Promo Banner (The "Get App" part from your image) */
+        .promo-banner {
+            background-color: #fffbe2;
+            padding: 8px;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 13px;
+            color: #3b5998;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Login Interface */
+        .login-container {
+            padding: 12px;
+            background: white;
+        }
+
+        .label-grey {
+            color: #90949c;
+            font-weight: bold;
+            font-size: 12px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .fb-input {
+            width: 100%;
+            border: 1px solid #bdc3c7;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            border-radius: 2px;
+        }
+
+        .btn-blue {
+            background-color: #4e69a2;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-green-large {
+            background-color: #42b72a;
+            color: white;
+            padding: 8px 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #4b4f56;
+            margin: 15px 0;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #dddfe2;
+        }
+        .divider span { padding: 0 10px; font-size: 12px; }
+
+        /* Footer (Dark grey area from your image) */
+        .fb-footer {
+            background-color: #4b4f56;
+            padding: 15px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .lang-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* News Feed Styles */
+        .nav-tabs {
+            background-color: white;
+            border-bottom: 1px solid #dddfe2;
+            display: flex;
+        }
+        .nav-tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            color: #3b5998;
+            font-weight: bold;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        .nav-tab.active {
+            border-bottom: 2px solid #3b5998;
+            color: #000;
+        }
+
+        .post-card {
+            background: white;
+            margin-bottom: 8px;
+            padding: 8px;
+            border-bottom: 1px solid #dddfe2;
+        }
+        .post-author {
+            color: #3b5998;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .post-actions {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #3b5998;
+        }
+
+        .status-box {
+            background: white;
+            padding: 10px;
+            border-bottom: 1px solid #dddfe2;
+        }
+        
+        #app-view { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- LOGIN VIEW -->
+    <div id="login-view">
+        <div class="fb-header">
+            <div class="fb-logo">fakebook</div>
+            <a href="#" class="btn-green-header">Create Account</a>
+        </div>
+
+        <div class="promo-banner">
+            <div style="background:#ccd0d5; padding:4px; border-radius:2px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#4b4f56"><path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14z"/></svg>
+            </div>
+            <span>Get FakeBook for Android and browse faster.</span>
+        </div>
+
+        <div class="login-container">
+            <label class="label-grey">Phone number or email address</label>
+            <input type="text" id="login-email" class="fb-input">
+            
+            <label class="label-grey">Password</label>
+            <input type="password" id="login-pass" class="fb-input">
+            
+            <button id="btn-login" class="btn-blue">Log In</button>
+
+            <div class="divider"><span>or</span></div>
+
+            <div class="text-center">
+                <button class="btn-green-large">Create New Account</button>
+            </div>
+
+            <div class="text-center mt-6">
+                <a href="#" style="color:#3b5998; text-decoration:none; font-size:14px;">Forgotten password?</a>
+            </div>
+        </div>
+
+        <div class="fb-footer">
+            <div class="lang-grid">
+                <div>English (UK)</div>
+                <div style="color:#8db2fd">हिन्दी</div>
+                <div style="color:#8db2fd">اردو</div>
+                <div style="color:#8db2fd">ಕನ್ನಡ</div>
+                <div style="color:#8db2fd">മലയാളം</div>
+                <div style="border:1px solid #8db2fd; width:20px; height:20px; display:flex; align-items:center; justify-content:center; border-radius:2px;">+</div>
+            </div>
+            <div>FakeBook Inc.</div>
+        </div>
+    </div>
+
+    <!-- APP VIEW (The News Feed after login) -->
+    <div id="app-view">
+        <div class="fb-header">
+            <div class="fb-logo">fakebook</div>
+            <div class="flex gap-4">
+                <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </div>
+        </div>
+
+        <div class="nav-tabs">
+            <a href="#" class="nav-tab active">Home</a>
+            <a href="#" class="nav-tab">Profile</a>
+            <a href="#" class="nav-tab">Messages</a>
+            <a href="#" class="nav-tab">Notifications</a>
+        </div>
+
+        <div class="status-box">
+            <textarea id="status-text" placeholder="What's on your mind?" class="w-full border p-2 text-sm outline-none" rows="2"></textarea>
+            <button id="btn-post" class="btn-blue mt-2" style="width: auto; padding: 5px 15px;">Post</button>
+        </div>
+
+        <div id="feed-container">
+            <div class="p-4 text-center text-gray-400">Loading feed...</div>
+        </div>
+
+        <div class="fb-footer mt-4">
+            <a href="#" id="btn-logout" style="color:white; text-decoration:none;">Log Out</a>
+            <div class="mt-2 opacity-50">FakeBook © 2026</div>
+        </div>
+    </div>
+
+    <!-- Toast for Notifications -->
+    <div id="toast" class="fixed bottom-4 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-2 text-xs rounded hidden"></div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'fakebook-mbasic';
+
+        const loginView = document.getElementById('login-view');
+        const appView = document.getElementById('app-view');
+        const feedContainer = document.getElementById('feed-container');
+        const statusText = document.getElementById('status-text');
+        const btnPost = document.getElementById('btn-post');
+        const btnLogin = document.getElementById('btn-login');
+        const btnLogout = document.getElementById('btn-logout');
+        const toast = document.getElementById('toast');
+
+        function showToast(m) {
+            toast.textContent = m;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 3000);
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loginView.style.display = 'none';
+                appView.style.display = 'block';
+                loadFeed();
+            } else {
+                loginView.style.display = 'block';
+                appView.style.display = 'none';
+            }
+        });
+
+        btnLogin.onclick = () => {
+            signInAnonymously(auth).catch(() => showToast("Login failed"));
+        };
+
+        btnLogout.onclick = (e) => {
+            e.preventDefault();
+            signOut(auth);
+        };
+
+        function loadFeed() {
+            const postsRef = collection(db, 'artifacts', appId, 'public', 'data', 'posts');
+            onSnapshot(postsRef, (snapshot) => {
+                const posts = [];
+                snapshot.forEach(doc => posts.push({id: doc.id, ...doc.data()}));
+                posts.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+                renderFeed(posts);
+            }, () => showToast("Error loading feed"));
+        }
+
+        function renderFeed(posts) {
+            if (posts.length === 0) {
+                feedContainer.innerHTML = '<div class="p-8 text-center text-gray-500">No posts yet.</div>';
+                return;
+            }
+            feedContainer.innerHTML = posts.map(p => `
+                <div class="post-card">
+                    <a href="#" class="post-author">User_${p.userId.substring(0, 5)}</a>
+                    <div class="mt-1">${p.content}</div>
+                    <div class="post-actions">
+                        <span class="text-gray-400 text-[10px]">${p.createdAt ? new Date(p.createdAt.seconds * 1000).toLocaleTimeString() : 'now'}</span> · 
+                        <a href="#" class="hover:underline">Like</a> · 
+                        <a href="#" class="hover:underline">Comment</a> · 
+                        <a href="#" class="hover:underline">Share</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        btnPost.onclick = async () => {
+            const content = statusText.value.trim();
+            if (!content || !auth.currentUser) return;
+            
+            btnPost.disabled = true;
+            btnPost.innerText = '...';
+            
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'posts'), {
+                    content,
+                    userId: auth.currentUser.uid,
+                    createdAt: serverTimestamp()
+                });
+                statusText.value = '';
+            } catch (e) {
+                showToast("Failed to post");
+            } finally {
+                btnPost.disabled = false;
+                btnPost.innerText = 'Post';
+            }
+        };
+
+    </script>
+</body>
+</html>
