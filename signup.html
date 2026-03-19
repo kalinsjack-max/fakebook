@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FakeBook - Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #eceff5;
+            color: #000;
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        .fb-header {
+            background-color: #3b5998;
+            padding: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .fb-logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: -1px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .signup-container {
+            padding: 12px;
+            background: white;
+        }
+
+        .header-text {
+            color: #1c1e21;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .sub-text {
+            color: #606770;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .label-grey {
+            color: #90949c;
+            font-weight: bold;
+            font-size: 12px;
+            display: block;
+            margin-bottom: 4px;
+            margin-top: 10px;
+        }
+
+        .fb-input {
+            width: 100%;
+            border: 1px solid #bdc3c7;
+            padding: 8px;
+            margin-bottom: 8px;
+            box-sizing: border-box;
+            border-radius: 2px;
+        }
+
+        .dob-select {
+            border: 1px solid #bdc3c7;
+            padding: 5px;
+            font-size: 13px;
+            background: #f5f6f7;
+        }
+
+        .gender-container {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+        }
+
+        .btn-green-large {
+            background-color: #42b72a;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .terms-text {
+            font-size: 11px;
+            color: #777;
+            margin-top: 15px;
+            line-height: 1.4;
+        }
+
+        .fb-footer {
+            background-color: #4b4f56;
+            padding: 15px;
+            color: white;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        .lang-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .link-blue {
+            color: #3b5998;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fb-header">
+        <a href="index.html" class="fb-logo">fakebook</a>
+        <a href="index.html" style="color:white; font-size:12px; text-decoration:none; font-weight:bold;">Log In</a>
+    </div>
+
+    <div class="signup-container">
+        <div class="header-text">Create a New Account</div>
+        <div class="sub-text">It's quick and easy.</div>
+
+        <hr style="border: 0; border-top: 1px solid #dddfe2; margin-bottom: 15px;">
+
+        <input type="text" placeholder="First name" class="fb-input">
+        <input type="text" placeholder="Surname" class="fb-input">
+        <input type="text" placeholder="Mobile number or email address" class="fb-input">
+        <input type="password" placeholder="New password" class="fb-input">
+
+        <label class="label-grey">Birthday</label>
+        <div class="flex gap-2">
+            <select class="dob-select">
+                <option>1</option><option>2</option><option>3</option> <!-- etc -->
+                <option selected>19</option>
+            </select>
+            <select class="dob-select">
+                <option>Jan</option><option selected>Mar</option><option>May</option>
+            </select>
+            <select class="dob-select">
+                <option>2026</option><option selected>2000</option><option>1990</option>
+            </select>
+        </div>
+
+        <label class="label-grey">Gender</label>
+        <div class="gender-container">
+            <label><input type="radio" name="gender"> Female</label>
+            <label><input type="radio" name="gender"> Male</label>
+            <label><input type="radio" name="gender"> Custom</label>
+        </div>
+
+        <div class="terms-text">
+            By clicking Sign Up, you agree to our <span class="link-blue">Terms</span>, <span class="link-blue">Data Policy</span> and <span class="link-blue">Cookie Policy</span>. You may receive SMS notifications from us and can opt out at any time.
+        </div>
+
+        <button class="btn-green-large" onclick="window.location.href='index.html'">Sign Up</button>
+        
+        <div class="text-center mt-4">
+            <a href="index.html" class="link-blue" style="font-size: 14px;">Already have an account?</a>
+        </div>
+    </div>
+
+    <div class="fb-footer">
+        <div class="lang-grid">
+            <div>English (UK)</div>
+            <div style="color:#8db2fd">हिन्दी</div>
+            <div style="color:#8db2fd">اردو</div>
+            <div style="color:#8db2fd">ಕನ್ನಡ</div>
+            <div style="color:#8db2fd">മലയാളം</div>
+            <div style="border:1px solid #8db2fd; width:20px; height:20px; display:flex; align-items:center; justify-content:center; border-radius:2px;">+</div>
+        </div>
+        <div>FakeBook Inc.</div>
+    </div>
+
+</body>
+</html>
