@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fakebook – যেখানে সবই ভুয়া, শুধু সার্কাজমটা আসল</title>
+<meta name="description" content="Fakebook: ফেসবুকের প্যারোডি। সবকিছু ভুয়া, শুধু সার্কাজম আসল।">
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f0f2f5;--card:#fff;--tx:#050505;--tx2:#65676b;--bl:#1877f2;--hv:#e4e6eb;--ln:#ced0d4;--rd:#f02849}
+@media(prefers-color-scheme:dark){:root{--bg:#18191a;--card:#242526;--tx:#e4e6eb;--tx2:#b0b3b8;--hv:#3a3b3c;--ln:#3e4042}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Hind Siliguri",system-ui,sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.5}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--bl);outline-offset:2px}
+nav{position:sticky;top:0;z-index:20;height:56px;background:var(--card);box-shadow:0 1px 2px #0003;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 16px;gap:8px}
+.nl{display:flex;align-items:center;gap:8px}.nl img{width:40px;height:40px;border-radius:10px}
+.srch{background:var(--hv);border-radius:20px;border:0;padding:8px 14px;width:240px;color:var(--tx);font:inherit}
+.tabs{display:flex;gap:4px}.tab{width:100px;height:52px;display:grid;place-items:center;font-size:22px;border-bottom:3px solid transparent;border-radius:8px 8px 0 0;color:var(--tx2)}
+.tab:hover{background:var(--hv)}.tab.on{border-color:var(--bl);color:var(--bl)}
+.nr{display:flex;justify-content:flex-end;gap:8px;position:relative}
+.ib{width:40px;height:40px;border-radius:50%;background:var(--hv);font-size:18px;position:relative}
+.ib:hover{filter:brightness(.93)}.bdg{position:absolute;top:-4px;right:-4px;background:var(--rd);color:#fff;font-size:11px;border-radius:10px;padding:0 5px}
+.dd{position:absolute;top:48px;right:0;width:320px;background:var(--card);border-radius:8px;box-shadow:0 2px 12px #0004;padding:8px;display:none}
+.dd.show{display:block}.dd h4{padding:6px 8px}.dd p{padding:8px;border-radius:6px;font-size:14px}.dd p:hover{background:var(--hv)}
+main{display:grid;grid-template-columns:300px minmax(0,1fr) 300px;gap:24px;max-width:1300px;margin:0 auto;padding:16px}
+aside{position:sticky;top:72px;align-self:start;max-height:calc(100vh - 88px);overflow:auto}
+.mi{display:flex;align-items:center;gap:12px;padding:8px;border-radius:8px;width:100%;text-align:left}
+.mi:hover{background:var(--hv)}.mi span:first-child{font-size:24px;width:32px;text-align:center}
+.card{background:var(--card);border-radius:8px;box-shadow:0 1px 2px #0002;margin-bottom:16px}
+.stories{display:flex;gap:8px;overflow-x:auto;padding:12px}
+.st{flex:0 0 120px;height:190px;border-radius:10px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:8px;font-weight:600;font-size:13px;text-align:left;background-size:cover}
+.st big{font-size:34px;margin-bottom:auto}
+.comp{padding:12px 16px}.crow{display:flex;gap:8px;align-items:center}
+.av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;flex:none}
+.cin{flex:1;background:var(--hv);border:0;border-radius:20px;padding:10px 14px;color:var(--tx);font:inherit}
+.cact{display:flex;border-top:1px solid var(--ln);margin-top:12px;padding-top:8px}
+.cact button,.acts button{flex:1;padding:8px;border-radius:6px;color:var(--tx2);font-weight:600}
+.cact button:hover,.acts button:hover{background:var(--hv)}
+.ph{padding:12px 16px 0;display:flex;gap:8px;align-items:center}.ph b{display:block;line-height:1.2}.ph small{color:var(--tx2)}
+.body{padding:12px 16px}.pic{height:260px;display:grid;place-items:center;font-size:64px;text-align:center;padding:16px;color:#fff;font-weight:700}
+.cnt{display:flex;justify-content:space-between;padding:8px 16px;color:var(--tx2);font-size:14px}
+.acts{display:flex;margin:0 16px;border-top:1px solid var(--ln);padding:4px 0}
+.acts .lk.on{color:var(--bl)}
+.cms{padding:8px 16px 12px}.cm{display:flex;gap:8px;margin-top:8px}.cm div{background:var(--hv);border-radius:16px;padding:6px 12px}.cm b{font-size:13px;display:block}
+.cf{display:flex;gap:8px;margin-top:10px}
+.sp{display:flex;gap:10px;padding:8px;border-radius:8px}.sp:hover{background:var(--hv)}.sp .th{width:90px;height:90px;border-radius:8px;display:grid;place-items:center;font-size:34px;background:#ffd54f;flex:none}
+.sp small{color:var(--tx2)}h3{padding:8px;color:var(--tx2);font-size:16px}
+.on-dot{position:relative}.on-dot::after{content:"";position:absolute;right:-1px;bottom:-1px;width:11px;height:11px;border-radius:50%;background:#31a24c;border:2px solid var(--card)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#050505;color:#fff;padding:12px 20px;border-radius:10px;transition:transform .25s;z-index:60;max-width:90vw;text-align:center}
+#toast.show{transform:translateX(-50%)}
+#login{position:fixed;inset:0;background:var(--bg);z-index:50;display:grid;place-items:center;padding:16px;overflow:auto}
+#login.hide{display:none}
+.lw{display:flex;gap:48px;align-items:center;max-width:960px;flex-wrap:wrap;justify-content:center}
+.lw>div:first-child{flex:1 1 340px;max-width:460px}.lw img.big{width:100%;border-radius:16px;box-shadow:0 4px 20px #0003}
+.lf{flex:0 1 400px;padding:20px}.lf input{width:100%;padding:14px;border:1px solid var(--ln);border-radius:8px;margin-bottom:12px;font:inherit;background:var(--card);color:var(--tx)}
+.btn{width:100%;background:var(--bl);color:#fff;padding:12px;border-radius:8px;font-size:18px;font-weight:700}
+.btn:hover{filter:brightness(1.1)}.btn.gr{background:#42b72a;width:auto;padding:12px 16px;font-size:16px}
+.lf a{display:block;text-align:center;color:var(--bl);margin:14px 0;cursor:pointer}
+footer{text-align:center;color:var(--tx2);font-size:13px;padding:8px 16px 32px}
+.view{display:none}.view.on{display:block}
+.cover{height:220px;background:linear-gradient(135deg,#90a4ae,#cfd8dc);display:grid;place-items:center;color:#455a64;font-weight:600;border-radius:8px 8px 0 0;text-align:center;padding:12px}
+.pinfo{display:flex;gap:16px;align-items:flex-end;padding:0 16px 16px;margin-top:-40px;flex-wrap:wrap}.mut{color:var(--tx2)}
+#v-profile p{margin:4px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.gc{border:1px solid var(--ln);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.gc .th{height:130px;display:grid;place-items:center;font-size:48px;color:#fff;font-weight:700}
+.gc .gb{padding:10px;display:flex;flex-direction:column;gap:6px;flex:1}.gc small{color:var(--tx2)}
+.sb{background:#e7f3ff;color:#1877f2;padding:7px;border-radius:6px;font-weight:600}.sb2{background:var(--hv);padding:7px;border-radius:6px;font-weight:600}
+@media(prefers-color-scheme:dark){.sb{background:#263951}}
+.vc .vt{height:240px;display:grid;place-items:center;font-size:72px;position:relative;color:#fff}
+.vc .bar{position:absolute;left:0;bottom:0;height:5px;width:99%;background:#f02849}
+.vc .vm{padding:12px 16px}
+#chat{position:fixed;right:16px;bottom:0;width:330px;max-width:calc(100vw - 32px);height:420px;background:var(--card);border-radius:10px 10px 0 0;box-shadow:0 0 12px #0005;z-index:40;display:flex;flex-direction:column}
+#chat[hidden]{display:none}
+.chh{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--ln)}
+#chm{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:6px}
+.mg{max-width:80%;padding:7px 12px;border-radius:16px;background:var(--hv);align-self:flex-start}
+.mg.me{background:var(--bl);color:#fff;align-self:flex-end}.sn{font-size:11px;color:var(--tx2);align-self:flex-end}
+#chi{margin:8px;width:calc(100% - 16px);flex:none}
+#ck{position:fixed;left:16px;bottom:16px;width:290px;padding:14px;z-index:45;box-shadow:0 2px 14px #0005}#ck p{margin:6px 0 10px}
+@media(max-width:1000px){main{grid-template-columns:minmax(0,1fr)}aside{display:none}.tab{width:56px}.srch{width:130px}}
+@media(max-width:620px){.tabs{display:none}nav{grid-template-columns:1fr auto}}
+@media(prefers-reduced-motion:reduce){#toast{transition:none}}
+</style>
+</head>
+<body>
+
+<div id="login">
+ <div class="lw">
+  <div>
+   <img class="big" src="assets/logo.png" alt="Fakebook – যেখানে সবই ভুয়া, শুধু সার্কাজমটা আসল">
+  </div>
+  <div class="card lf">
+   <input id="u" placeholder="ইমেইল বা ফোন নম্বর (যেটা মনে থাকে)" aria-label="ইমেইল">
+   <input id="p" type="password" placeholder="পাসওয়ার্ড (‘123456’ দিলেও চলবে)" aria-label="পাসওয়ার্ড">
+   <button class="btn" id="go">লগ ইন করো</button>
+   <a id="forgot">পাসওয়ার্ড ভুলে গেছ? ভালোই তো, নতুন জীবন শুরু করো।</a>
+   <hr style="border:0;border-top:1px solid var(--ln);margin:12px 0 20px">
+   <div style="text-align:center"><button class="btn gr" id="reg">নতুন অ্যাকাউন্ট খোলো</button></div>
+   <p style="text-align:center;font-size:13px;color:var(--tx2);margin-top:14px">কোনো ডেটা সংরক্ষণ হয় না। এটা পুরোটাই মজা।</p>
+  </div>
+ </div>
+</div>
+
+<nav>
+ <div class="nl"><img src="assets/icon.png" alt="Fakebook"><input class="srch" placeholder="Fakebook-এ খোঁজো (পাবে না)" aria-label="সার্চ" id="sr"></div>
+ <div class="tabs">
+  <button class="tab on" data-v="home" title="হোম">🏠</button>
+  <button class="tab" title="বন্ধু" data-v="friends">👥</button>
+  <button class="tab" title="ভিডিও" data-v="video">▶️</button>
+  <button class="tab" title="মার্কেটপ্লেস" data-v="market">🏪</button>
+ </div>
+ <div class="nr">
+  <button class="ib" id="msgb" aria-label="মেসেঞ্জার">💬<span class="bdg">99+</span></button>
+  <button class="ib" id="bell">🔔<span class="bdg">7</span></button>
+  <button class="ib" id="me" data-v="profile" aria-label="প্রোফাইল"><span class="av" style="background:#7b1fa2;width:40px;height:40px">আ</span></button>
+  <div class="dd" id="dd">
+   <h4>নোটিফিকেশন</h4>
+   <p>🙄 রাকিব তোমার ১৪ বছর আগের ছবিতে লাইক দিয়েছে।</p>
+   <p>🎂 আজ কারও জন্মদিন নেই। নিজেকে শুভেচ্ছা জানাও।</p>
+   <p>👀 ৩৮৭ জন তোমার প্রোফাইল দেখেনি।</p>
+   <p>📢 তুমি ‘আমার ক্লাস গ্রুপ ২০১৪’-এ ট্যাগ হয়েছ। কেউ কিছু বলেনি।</p>
+  </div>
+ </div>
+</nav>
+
+<main>
+ <aside aria-label="মেনু">
+  <button class="mi" data-v="profile"><span class="av" style="background:#7b1fa2;width:36px;height:36px">আ</span><b>আমি (ভুয়া নামে)</b></button>
+  <button class="mi" data-v="friends"><span>👥</span>বন্ধুরা (যাদের চিনি না)</button>
+  <button class="mi" data-t="স্মৃতি: ২০১৬-তে তুমি যা ভাবতে, তা আজ লজ্জার।"><span>🕰️</span>পুরনো লজ্জা</button>
+  <button class="mi" data-t="সেভ করা পোস্ট: কখনো খোলা হবে না।"><span>🔖</span>সেভ করে ভুলে যাওয়া</button>
+  <button class="mi" data-t="গ্রুপ: ‘সবাই সবাইকে বিক্রি করছে’।"><span>👪</span>গ্রুপ (মিউট করা)</button>
+  <button class="mi" data-t="পেজ: ২ লাইক, ১টা নিজের, ১টা মায়ের।"><span>🚩</span>পেজ</button>
+  <button class="mi" data-t="ইভেন্ট: ‘যাব’ চাপ দিলে ‘যাব না’ বুঝতে হয়।"><span>📅</span>ইভেন্ট (যাব না)</button>
+  <button class="mi" id="dm"><span>🌙</span>থিম বদলাও (ফোনের সেটিং দেখো)</button>
+ </aside>
+
+<div id="center">
+ <section id="v-home" class="view on" aria-label="ফিড">
+  <div class="card stories">
+   <button class="st" style="background:linear-gradient(160deg,#1877f2,#7b1fa2)" data-t="স্টোরি দিলে ২৪ ঘণ্টা পর কেউ দেখেনি প্রমাণ হবে।"><big>➕</big>স্টোরি বানাও</button>
+   <button class="st" style="background:linear-gradient(160deg,#ef6c00,#c62828)" data-t="ফিটনেস স্টোরি: জিমে যায়নি, শুধু ছবি তুলেছে।"><big>🏋️</big>জিমের ছবি (জিম বন্ধ)</button>
+   <button class="st" style="background:linear-gradient(160deg,#2e7d32,#00695c)" data-t="কক্সবাজার থেকে লাইভ… ঘরে বসে।"><big>🏖️</big>ঘুরতে গেছি (ফিল্টারে)</button>
+   <button class="st" style="background:linear-gradient(160deg,#6a1b9a,#283593)" data-t="রাত ৩টা: ‘কেউ আছো?’ কেউ নেই।"><big>🌃</big>রাত ৩টার দার্শনিক</button>
+   <button class="st" style="background:linear-gradient(160deg,#00838f,#1565c0)" data-t="ভাইরাল হতে গিয়ে ভ্যাট হয়ে গেছে।"><big>🍳</big>রান্নার রিলস</button>
+  </div>
+
+  <div class="card comp">
+   <div class="crow"><span class="av" style="background:#7b1fa2">আ</span><input class="cin" id="ci" placeholder="মনে কী চলছে? (কেউ জানতে চায়নি, তবু বলো)" aria-label="নতুন পোস্ট"></div>
+   <div class="cact">
+    <button data-t="লাইভ যাবে? দর্শক: তুমি আর তোমার মা।">🔴 লাইভ ভিডিও</button>
+    <button data-t="ছবি আপলোড: ৫টা তুলে ১টা দেওয়া হয়, ১টাও ঠিক না।">🖼️ ছবি/ভিডিও</button>
+    <button id="feel">😏 অনুভূতি</button>
+   </div>
+  </div>
+
+  <div id="feed"></div>
+  <div class="card" style="padding:20px;text-align:center">আর কোনো পোস্ট নেই। এবার ফোন রেখে বাইরে গিয়ে ঘাস ছোঁও। 🌱</div>
+ </section>
+
+ <section id="v-profile" class="view" aria-label="প্রোফাইল">
+  <div class="card">
+   <div class="cover">কভার ফটো: মেঘলা আকাশ (গুগল থেকে নেওয়া)</div>
+   <div class="pinfo"><span class="av" style="background:#7b1fa2;width:110px;height:110px;font-size:44px;border:4px solid var(--card)">আ</span>
+    <div style="flex:1"><h2>আমি (ভুয়া নামে)</h2><p class="mut">বন্ধু ৫০০০ জন, কথা হয় ৩ জনের সাথে</p></div>
+    <button class="btn" style="width:auto;padding:8px 14px;font-size:15px" data-t="প্রোফাইল এডিট করলেও তুমি একই থাকবে।">✏️ প্রোফাইল এডিট</button></div>
+  </div>
+  <div class="card" style="padding:16px"><h3 style="padding:0 0 8px">পরিচিতি</h3>
+   <p>🎓 পড়াশোনা করেছেন: গুগল ইউনিভার্সিটি (ডিগ্রি ছাড়া)</p>
+   <p>💼 কাজ করেন: ফেসবুকে স্ক্রল করা, ফুল টাইম</p>
+   <p>❤️ সম্পর্ক: সব জটিল, মূলত ওয়াইফাইয়ের সাথে</p>
+   <p>📍 থাকেন: বিছানায়</p></div>
+  <div id="pfeed"></div>
+ </section>
+
+ <section id="v-friends" class="view" aria-label="বন্ধু">
+  <div class="card" style="padding:16px"><h3 style="padding:0 0 8px">যাদের চিনতে পারো (পারো না)</h3><div class="grid" id="fgrid"></div></div>
+ </section>
+
+ <section id="v-market" class="view" aria-label="মার্কেটপ্লেস">
+  <div class="card" style="padding:16px"><h3 style="padding:0 0 8px">মার্কেটপ্লেস: সব বিক্রি হবে, কিছু কেনা হবে না</h3><div class="grid" id="mgrid"></div></div>
+ </section>
+
+ <section id="v-video" class="view" aria-label="ভিডিও">
+  <div id="vlist"></div>
+ </section>
+ </div>
+
+ <aside aria-label="স্পনসর্ড ও কন্টাক্ট">
+  <h3>স্পনসর্ড (টাকা দিয়ে বিরক্ত করা)</h3>
+  <div class="sp"><div class="th">💰</div><div><b>৯৯৯ টাকায় কোটিপতি!</b><br><small>fake-crypto-guru.bd</small></div></div>
+  <div class="sp"><div class="th" style="background:#81d4fa">🧴</div><div><b>৭ দিনে ফর্সা, ৮ম দিনে পুরনো রঙ</b><br><small>jadu-cream.com</small></div></div>
+  <hr style="border:0;border-top:1px solid var(--ln);margin:12px 0">
+  <h3>কন্টাক্ট</h3>
+  <button class="mi" data-chat="রাফি"><span class="av on-dot" style="background:#e65100;width:36px;height:36px">রা</span>রাফি (অনলাইন, রিপ্লাই দেবে না)</button>
+  <button class="mi" data-chat="সাদিয়া"><span class="av on-dot" style="background:#00695c;width:36px;height:36px">সা</span>সাদিয়া (অ্যাকটিভ নাউ…)</button>
+  <button class="mi" data-chat="Fakebook টিম"><span class="av on-dot" style="background:#1565c0;width:36px;height:36px">ফে</span>Fakebook টিম</button>
+  <button class="mi" data-chat="তানভীর ভাই"><span class="av on-dot" style="background:#6a1b9a;width:36px;height:36px">তা</span>তানভীর ভাই (সাবধান)</button>
+ </aside>
+</main>
+
+<footer>Fakebook একটি প্যারোডি ওয়েবসাইট, মজার জন্য বানানো। Facebook বা Meta-র সঙ্গে এর কোনো সম্পর্ক নেই। সব চরিত্র ও ঘটনা কাল্পনিক।</footer>
+<div id="chat" hidden><div class="chh"><b id="chn">চ্যাট</b><button id="chx" aria-label="চ্যাট বন্ধ করো">✕</button></div><div id="chm" aria-live="polite"></div><input id="chi" class="cin" placeholder="মেসেজ লেখো (সিন হবে)" aria-label="মেসেজ"></div>
+<div id="ck" class="card"><b>🍪 কুকি নোটিশ</b><p>আমরা তোমার সব জানি, তবু ভদ্রতা করে জিজ্ঞেস করছি।</p><button class="btn ckb" style="padding:8px">মেনে নিলাম</button><button class="btn ckb" style="padding:8px;background:var(--hv);color:var(--tx);margin-top:6px">আর কোনো উপায় নেই</button></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+var $=function(s){return document.querySelector(s)};
+var toastEl=$("#toast"),tt;
+function toast(m){toastEl.textContent=m;toastEl.classList.add("show");clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove("show")},2800)}
+function rnd(a){return a[Math.floor(Math.random()*a.length)]}
+var likeMsgs=["লাইক দিলে। কিন্তু মন থেকে না, জানি।","লাইক দিলে? এবার কমেন্টও করো, ভদ্রতা বলে কিছু আছে।","তোমার লাইক পোস্টকারীর জীবনের সবচেয়ে বড় অর্জন।","লাইক পড়েছে! এবার সে ভাববে সে বিখ্যাত।"];
+var users=[
+ {n:"ফেসবুক বিশেষজ্ঞ চাচা",c:"#c62828",t:"এইমাত্র",x:"জরুরি! এই পোস্ট ১০ জনকে শেয়ার না করলে আপনার ফোনের চার্জ ১% এ নেমে যাবে। আমি বিশ্বাস করিনি, তাই এখন চার্জার খুঁজছি।",p:"📱🔋😱",pb:"linear-gradient(135deg,#ef6c00,#c62828)",l:1203,cm:[["রিমি","শেয়ার করলাম চাচা, চার্জ ঠিক আছে তো?"],["সুমন","চাচা, আপনি WiFi-র পাসওয়ার্ডটা আগে দিন।"]]},
+ {n:"সাদমান (ফিলোসফার)",c:"#00695c",t:"৩ মিনিট আগে",x:"Feeling blessed 🙏 ছাদে দাঁড়িয়ে সূর্যাস্ত দেখছি। (আসলে ছাদে কাপড় তুলতে এসেছিলাম।)",p:"🌇",pb:"linear-gradient(135deg,#ff8f00,#6a1b9a)",l:48,cm:[["মা","ছেলে, কাপড়গুলো নিচে নামা।"]]},
+ {n:"Fakebook অ্যাডমিন",c:"#1565c0",t:"১ ঘণ্টা আগে",x:"নতুন ফিচার: এখন থেকে আপনার সব পোস্ট ‘আমার মতে’ ট্যাগসহ দেখা যাবে, যাতে কেউ সিরিয়াসলি না নেয়। Fakebook-এ সব ভুয়া, শুধু সার্কাজমটা আসল।",p:"🤡",pb:"linear-gradient(135deg,#1877f2,#00bcd4)",l:9999,cm:[["রাকিব","অ্যাডমিন ভাই, পাসওয়ার্ড ভুলে গেছি।"],["অ্যাডমিন","আমরাও 🙂"]]},
+ {n:"মোটিভেশনাল মামা",c:"#6a1b9a",t:"২ ঘণ্টা আগে",x:"ভোর ৫টায় উঠো, ঠান্ডা পানিতে গোসল করো, ১০ কিলোমিটার দৌড়াও, তারপর সফল হও। (এই পোস্ট রাত ২টায় লেখা।)",p:"🏃‍♂️💪",pb:"linear-gradient(135deg,#2e7d32,#00695c)",l:312,cm:[["তানভীর","মামা, আপনি তো দুপুর ১২টায় ঘুম থেকে ওঠেন!"]]},
+ {n:"রিলস কিং রাজু",c:"#e65100",t:"গতকাল",x:"১০ সেকেন্ডের রিলসে ৩ ঘণ্টা সময় লেগেছে, লাইক পেয়েছি ২টা। একটা আমার, আরেকটা আমার ফেক আইডির। 😎",p:"🎬",pb:"linear-gradient(135deg,#283593,#c62828)",l:2,cm:[["সাদিয়া","ভাই ফেক আইডিটা আমাকে দাও, আমারও লাগবে।"]]}
+];
+var feed=$("#feed");
+function mk(u,mine){
+ var d=document.createElement("article");d.className="card";var liked=false,n=u.l;
+ d.innerHTML='<div class="ph"><span class="av" style="background:'+u.c+'">'+u.n.charAt(0)+'</span><div><b>'+u.n+'</b><small>'+u.t+' · 🌍</small></div></div>'
+ +'<div class="body"></div>'+(u.p?'<div class="pic" style="background:'+u.pb+'">'+u.p+'</div>':'')
+ +'<div class="cnt"><span class="lc"></span><span class="cc"></span></div>'
+ +'<div class="acts"><button class="lk">👍 লাইক</button><button class="cb">💬 কমেন্ট</button><button class="sh">↗️ শেয়ার</button></div>'
+ +'<div class="cms"><div class="cl"></div><div class="cf"><span class="av" style="background:#7b1fa2;width:32px;height:32px;font-size:13px">আ</span><input class="cin" placeholder="কিছু একটা লেখো…" aria-label="কমেন্ট"></div></div>';
+ d.querySelector(".body").textContent=u.x;
+ var lc=d.querySelector(".lc"),cc=d.querySelector(".cc"),cl=d.querySelector(".cl"),cnt=u.cm.length;
+ function up(){lc.textContent="👍 "+n.toLocaleString("bn-BD");cc.textContent=cnt.toLocaleString("bn-BD")+"টি কমেন্ট"}
+ function addC(a,b){var c=document.createElement("div");c.className="cm";c.innerHTML='<span class="av" style="background:#546e7a;width:32px;height:32px;font-size:13px"></span><div><b></b><span></span></div>';c.querySelector(".av").textContent=a.charAt(0);c.querySelector("b").textContent=a;c.querySelector("span:last-child").textContent=b;cl.appendChild(c)}
+ u.cm.forEach(function(c){addC(c[0],c[1])});up();
+ var lk=d.querySelector(".lk");
+ lk.onclick=function(){liked=!liked;n+=liked?1:-1;lk.classList.toggle("on",liked);up();toast(liked?rnd(likeMsgs):"লাইক তুলে নিলে? ভীতু।")};
+ d.querySelector(".cb").onclick=function(){d.querySelector(".cin").focus()};
+ d.querySelector(".sh").onclick=function(){toast("শেয়ার করলে। এবার ‘আমি শেয়ার করিনি’ বলার উপায় নেই।")};
+ d.querySelector(".cf .cin").onkeydown=function(e){if(e.key==="Enter"&&this.value.trim()){addC("আমি (ভুয়া)",this.value.trim());cnt++;up();this.value="";toast("কমেন্ট করলে। কেউ পড়বে না, তবু ভালো।")}};
+ return d}
+users.forEach(function(u){feed.appendChild(mk(u))});
+var ci=$("#ci");
+ci.onkeydown=function(e){if(e.key==="Enter"&&ci.value.trim()){feed.insertBefore(mk({n:"আমি (ভুয়া নামে)",c:"#7b1fa2",t:"এইমাত্র",x:ci.value.trim(),l:0,cm:[]}),feed.firstChild);ci.value="";toast("পোস্ট হয়েছে! এখন ১ মিনিট পরপর ফোন দেখো, কেউ লাইক দেয়নি।")}};
+document.addEventListener("click",function(e){var t=e.target.closest("[data-t]");if(t)toast(t.getAttribute("data-t"))});
+$("#bell").onclick=function(e){e.stopPropagation();$("#dd").classList.toggle("show")};
+document.addEventListener("click",function(e){if(!e.target.closest("#bell,#dd"))$("#dd").classList.remove("show")});
+$("#feel").onclick=function(){toast(rnd(["অনুভূতি: ক্লান্ত, কিন্তু ফোন ছাড়তে পারছি না। 😩","অনুভূতি: ধন্য (পোস্টের শেষে একটা কাজের কথা নেই)।","অনুভূতি: বিরক্ত, কিন্তু স্ক্রল করছি।"]))};
+$("#dm").onclick=function(){toast("থিম তোমার ফোনের ডার্ক/লাইট মোড মেনে চলে। আমরা অলস, তাই এটাই ফিচার।")};
+$("#sr").onkeydown=function(e){if(e.key==="Enter"){toast("‘"+this.value+"’ পাওয়া যায়নি। জীবনেও কিছু পাওয়া যায় না।");this.value=""}};
+function login(){$("#login").classList.add("hide");toast("স্বাগতম! এখানে পাসওয়ার্ড কেউ চেক করে না, জীবনের মতোই।")}
+$("#go").onclick=login;$("#reg").onclick=login;
+$("#p").onkeydown=function(e){if(e.key==="Enter")login()};
+$("#forgot").onclick=function(){toast("পাসওয়ার্ড রিসেট লিংক পাঠানো হয়েছে… স্প্যামে খোঁজো। পাবে না।")};
+
+function show(v){document.querySelectorAll(".view").forEach(function(x){x.classList.toggle("on",x.id==="v-"+v)});document.querySelectorAll(".tab").forEach(function(t){t.classList.toggle("on",t.dataset.v===v)});window.scrollTo(0,0);var m={profile:"প্রোফাইল ঘুরে এলে। কিছু বদলায়নি।",friends:"৫০০০ বন্ধুর মধ্যে ৪৯৯৭ জন অপরিচিত।",market:"মার্কেটপ্লেস: ‘দাম কত?’ লিখে ১৫ জন গায়েব।",video:"ভিডিও খুললে ৩ ঘণ্টা কোথায় যাবে, জানা নেই।"};if(m[v])toast(m[v])}
+document.addEventListener("click",function(e){var t=e.target.closest("[data-v]");if(t)show(t.dataset.v)});
+[{n:"আমি (ভুয়া নামে)",c:"#7b1fa2",t:"৫ মিনিট আগে",x:"আজ ঠিক করেছি আর ফেসবুক ব্যবহার করব না।",l:0,cm:[["মা","বাবা, খেয়েছিস?"]]},{n:"আমি (ভুয়া নামে)",c:"#7b1fa2",t:"২০১৫",x:"প্রোফাইল পিকচার আপডেট করলাম। ১ লাইক, সেটাও আমার নিজের।",p:"🤳",pb:"linear-gradient(135deg,#ec407a,#7b1fa2)",l:1,cm:[["সুমন","ভাই, এটা কার ছবি?"]]}].forEach(function(u){$("#pfeed").appendChild(mk(u))});
+[["রাকিব","#c62828"],["তানিয়া","#00695c"],["জুবায়ের","#1565c0"],["নুসরাত","#6a1b9a"],["ফাহিম","#e65100"],["মিম","#ad1457"]].forEach(function(f){var d=document.createElement("div");d.className="gc";d.innerHTML='<div class="th" style="background:'+f[1]+'">'+f[0].charAt(0)+'</div><div class="gb"><b></b><small>সাধারণ বন্ধু ০ জন (সবাই ভুয়া)</small><button class="sb">বন্ধু হও</button><button class="sb2">সরিয়ে দাও</button></div>';d.querySelector("b").textContent=f[0];var a=d.querySelector(".sb");a.onclick=function(){a.textContent="অনুরোধ পাঠানো হয়েছে (দেখবে না)";a.disabled=true;toast("অনুরোধ গেছে। উত্তর আসবে ২০৩২ সালে।")};d.querySelector(".sb2").onclick=function(){d.remove();toast("সরিয়ে দিলে। ও কিছুই টের পাবে না।")};$("#fgrid").appendChild(d)});
+[["📱","iPhone 15 (ছবিটা ফোনের, ফোন না)","৳ ১,০০০","#546e7a"],["🚲","সাইকেল, একবার চালানো","৳ ৫০,০০০","#2e7d32"],["💔","ব্যবহৃত প্রেম (অমীমাংসিত)","বিনামূল্যে","#c62828"],["👕","ঈদের জামা, একবার পরা, সাইজ ভুল","৳ ২,৫০০","#6a1b9a"],["📶","WiFi পাসওয়ার্ড (পাশের বাসার)","৳ ১০","#1565c0"],["🛋️","সোফা, তিনজন বসলে চতুর্থজন বন্ধু","৳ ৮,০০০","#e65100"]].forEach(function(i){var d=document.createElement("div");d.className="gc";d.innerHTML='<div class="th" style="background:'+i[3]+'">'+i[0]+'</div><div class="gb"><b></b><b style="color:var(--bl)"></b><button class="sb">দাম কত?</button></div>';d.querySelectorAll("b")[0].textContent=i[1];d.querySelectorAll("b")[1].textContent=i[2];d.querySelector(".sb").onclick=function(){toast("উত্তর: ইনবক্সে বলছি। (কেউ ইনবক্সে যায়নি)")};$("#mgrid").appendChild(d)});
+[["💰","১০ সেকেন্ডে ধনী হওয়ার উপায়","৩ ঘণ্টা ৪ মিনিট","linear-gradient(135deg,#ff8f00,#c62828)"],["🍳","ডিম ভাজার ১২টা রহস্য (৪ নম্বরটা শকিং)","১৮ মিনিট","linear-gradient(135deg,#00838f,#283593)"],["🐱","বিড়াল সিঁড়ি থেকে পড়ে গেল, আপনি বিশ্বাস করবেন না কী হলো","০৭ সেকেন্ড","linear-gradient(135deg,#6a1b9a,#ad1457)"]].forEach(function(v){var d=document.createElement("div");d.className="card vc";d.innerHTML='<div class="vt" style="background:'+v[3]+'">'+v[0]+'<div class="bar"></div></div><div class="vm"><b></b><br><small class="mut"></small></div>';d.querySelector("b").textContent=v[1];d.querySelector("small").textContent="দৈর্ঘ্য: "+v[2]+", ১.২ কোটি ভিউ (সব বট)";d.querySelector(".vt").onclick=function(){toast("বাফারিং… ৯৯%। চিরকাল ৯৯%।")};$("#vlist").appendChild(d)});
+var rep=["সিন করলাম। উত্তর দেওয়ার মতো কিছু পাইনি।","হু।","ওকে।","পরে বলছি। (কখনো না)","ভাই, এখন ব্যস্ত, রিলস দেখছি।","তুই কি শুধু ‘হাই’ লেখার জন্য এসেছিস?","টাকা চাইলে সরাসরি বল, ভূমিকা লাগবে না।","মেসেজ পড়ে হাসলাম। কিন্তু রিপ্লাই দেব না।"];
+function bub(t,me){var d=document.createElement("div");d.className="mg"+(me?" me":"");d.textContent=t;$("#chm").appendChild(d);$("#chm").scrollTop=1e5;return d}
+function openChat(n){$("#chat").hidden=false;$("#chn").textContent=n;$("#chm").innerHTML="";bub("হ্যালো! আমি "+n+"। যা বলার বলো, উত্তর দেব না।",false);$("#chi").focus()}
+$("#msgb").onclick=function(){openChat("Fakebook বট")};
+$("#chx").onclick=function(){$("#chat").hidden=true};
+document.addEventListener("click",function(e){var c=e.target.closest("[data-chat]");if(c)openChat(c.dataset.chat)});
+$("#chi").onkeydown=function(e){if(e.key==="Enter"&&this.value.trim()){bub(this.value.trim(),true);this.value="";var s=document.createElement("div");s.className="sn";s.textContent="✓✓ সিন করা হয়েছে";$("#chm").appendChild(s);setTimeout(function(){var ty=bub("টাইপ করছে…",false);setTimeout(function(){ty.textContent=rnd(rep);$("#chm").scrollTop=1e5},1400)},900)}};
+document.querySelectorAll(".ckb").forEach(function(b){b.onclick=function(){$("#ck").style.display="none";toast("ধন্যবাদ! তোমার সব তথ্য আগেই নেওয়া হয়ে গেছে।")}});
+var T=document.title;document.addEventListener("visibilitychange",function(){document.title=document.hidden?"ফিরে এসো 🥺 Fakebook তোমাকে মিস করছে":T});
+</script>
+</body>
+</html>
