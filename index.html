@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fakebook – যেখানে সবই ভুয়া, শুধু সার্কাজমটা আসল</title>
+<meta name="description" content="Fakebook: ফেসবুকের প্যারোডি। সবকিছু ভুয়া, শুধু সার্কাজম আসল।">
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f0f2f5;--card:#fff;--tx:#050505;--tx2:#65676b;--bl:#1877f2;--hv:#e4e6eb;--ln:#ced0d4;--rd:#f02849}
+@media(prefers-color-scheme:dark){:root{--bg:#18191a;--card:#242526;--tx:#e4e6eb;--tx2:#b0b3b8;--hv:#3a3b3c;--ln:#3e4042}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Hind Siliguri",system-ui,sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.5}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--bl);outline-offset:2px}
+nav{position:sticky;top:0;z-index:20;height:56px;background:var(--card);box-shadow:0 1px 2px #0003;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 16px;gap:8px}
+.nl{display:flex;align-items:center;gap:8px}.nl img{width:40px;height:40px;border-radius:10px}
+.srch{background:var(--hv);border-radius:20px;border:0;padding:8px 14px;width:240px;color:var(--tx);font:inherit}
+.tabs{display:flex;gap:4px}.tab{width:100px;height:52px;display:grid;place-items:center;font-size:22px;border-bottom:3px solid transparent;border-radius:8px 8px 0 0;color:var(--tx2)}
+.tab:hover{background:var(--hv)}.tab.on{border-color:var(--bl);color:var(--bl)}
+.nr{display:flex;justify-content:flex-end;gap:8px;position:relative}
+.ib{width:40px;height:40px;border-radius:50%;background:var(--hv);font-size:18px;position:relative}
+.ib:hover{filter:brightness(.93)}.bdg{position:absolute;top:-4px;right:-4px;background:var(--rd);color:#fff;font-size:11px;border-radius:10px;padding:0 5px}
+.dd{position:absolute;top:48px;right:0;width:320px;background:var(--card);border-radius:8px;box-shadow:0 2px 12px #0004;padding:8px;display:none}
+.dd.show{display:block}.dd h4{padding:6px 8px}.dd p{padding:8px;border-radius:6px;font-size:14px}.dd p:hover{background:var(--hv)}
+main{display:grid;grid-template-columns:300px minmax(0,1fr) 300px;gap:24px;max-width:1300px;margin:0 auto;padding:16px}
+aside{position:sticky;top:72px;align-self:start;max-height:calc(100vh - 88px);overflow:auto}
+.mi{display:flex;align-items:center;gap:12px;padding:8px;border-radius:8px;width:100%;text-align:left}
+.mi:hover{background:var(--hv)}.mi span:first-child{font-size:24px;width:32px;text-align:center}
+.card{background:var(--card);border-radius:8px;box-shadow:0 1px 2px #0002;margin-bottom:16px}
+.stories{display:flex;gap:8px;overflow-x:auto;padding:12px}
+.st{flex:0 0 120px;height:190px;border-radius:10px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:8px;font-weight:600;font-size:13px;text-align:left;background-size:cover}
+.st big{font-size:34px;margin-bottom:auto}
+.comp{padding:12px 16px}.crow{display:flex;gap:8px;align-items:center}
+.av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;flex:none}
+.cin{flex:1;background:var(--hv);border:0;border-radius:20px;padding:10px 14px;color:var(--tx);font:inherit}
+.cact{display:flex;border-top:1px solid var(--ln);margin-top:12px;padding-top:8px}
+.cact button,.acts button{flex:1;padding:8px;border-radius:6px;color:var(--tx2);font-weight:600}
+.cact button:hover,.acts button:hover{background:var(--hv)}
+.ph{padding:12px 16px 0;display:flex;gap:8px;align-items:center}.ph b{display:block;line-height:1.2}.ph small{color:var(--tx2)}
+.body{padding:12px 16px}.pic{height:260px;display:grid;place-items:center;font-size:64px;text-align:center;padding:16px;color:#fff;font-weight:700}
+.cnt{display:flex;justify-content:space-between;padding:8px 16px;color:var(--tx2);font-size:14px}
+.acts{display:flex;margin:0 16px;border-top:1px solid var(--ln);padding:4px 0}
+.acts .lk.on{color:var(--bl)}
+.cms{padding:8px 16px 12px}.cm{display:flex;gap:8px;margin-top:8px}.cm div{background:var(--hv);border-radius:16px;padding:6px 12px}.cm b{font-size:13px;display:block}
+.cf{display:flex;gap:8px;margin-top:10px}
+.sp{display:flex;gap:10px;padding:8px;border-radius:8px}.sp:hover{background:var(--hv)}.sp .th{width:90px;height:90px;border-radius:8px;display:grid;place-items:center;font-size:34px;background:#ffd54f;flex:none}
+.sp small{color:var(--tx2)}h3{padding:8px;color:var(--tx2);font-size:16px}
+.on-dot{position:relative}.on-dot::after{content:"";position:absolute;right:-1px;bottom:-1px;width:11px;height:11px;border-radius:50%;background:#31a24c;border:2px solid var(--card)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#050505;color:#fff;padding:12px 20px;border-radius:10px;transition:transform .25s;z-index:60;max-width:90vw;text-align:center}
+#toast.show{transform:translateX(-50%)}
+#login{position:fixed;inset:0;background:var(--bg);z-index:50;display:grid;place-items:center;padding:16px;overflow:auto}
+#login.hide{display:none}
+.lw{display:flex;gap:48px;align-items:center;max-width:960px;flex-wrap:wrap;justify-content:center}
+.lw>div:first-child{flex:1 1 340px;max-width:460px}.lw img.big{width:100%;border-radius:16px;box-shadow:0 4px 20px #0003}
+.lf{flex:0 1 400px;padding:20px}.lf input{width:100%;padding:14px;border:1px solid var(--ln);border-radius:8px;margin-bottom:12px;font:inherit;background:var(--card);color:var(--tx)}
+.btn{width:100%;background:var(--bl);color:#fff;padding:12px;border-radius:8px;font-size:18px;font-weight:700}
+.btn:hover{filter:brightness(1.1)}.btn.gr{background:#42b72a;width:auto;padding:12px 16px;font-size:16px}
+.lf a{display:block;text-align:center;color:var(--bl);margin:14px 0;cursor:pointer}
+footer{text-align:center;color:var(--tx2);font-size:13px;padding:8px 16px 32px}
+.view{display:none}.view.on{display:block}
+.cover{height:220px;background:linear-gradient(135deg,#90a4ae,#cfd8dc);display:grid;place-items:center;color:#455a64;font-weight:600;border-radius:8px 8px 0 0;text-align:center;padding:12px}
+.pinfo{display:flex;gap:16px;align-items:flex-end;padding:0 16px 16px;margin-top:-40px;flex-wrap:wrap}.mut{color:var(--tx2)}
+#v-profile p{margin:4px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.gc{border:1px solid var(--ln);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.gc .th{height:130px;display:grid;place-items:center;font-size:48px;color:#fff;font-weight:700}
+.gc .gb{padding:10px;display:flex;flex-direction:column;gap:6px;flex:1}.gc small{color:var(--tx2)}
+.sb{background:#e7f3ff;color:#1877f2;padding:7px;border-radius:6px;font-weight:600}.sb2{background:var(--hv);padding:7px;border-radius:6px;font-weight:600}
+@media(prefers-color-scheme:dark){.sb{background:#263951}}
+.vc .vt{height:240px;display:grid;place-items:center;font-size:72px;position:relative;color:#fff}
+.vc .bar{position:absolute;left:0;bottom:0;height:5px;width:99%;background:#f02849}
+.vc .vm{padding:12px 16px}
+#chat{position:fixed;right:16px;bottom:0;width:330px;max-width:calc(100vw - 32px);height:420px;background:var(--card);border-radius:10px 10px 0 0;box-shadow:0 0 12px #0005;z-index:40;display:flex;flex-direction:column}
+#chat[hidden]{display:none}
+.chh{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--ln)}
+#chm{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:6px}
+.mg{max-width:80%;padding:7px 12px;border-radius:16px;background:var(--hv);align-self:flex-start}
+.mg.me{background:var(--bl);color:#fff;align-self:flex-end}.sn{font-size:11px;color:var(--tx2);align-self:flex-end}
+#chi{margin:8px;width:calc(100% - 16px);flex:none}
+#ck{position:fixed;left:16px;bottom:16px;width:290px;padding:14px;z-index:45;box-shadow:0 2px 14px #0005}#ck p{margin:6px 0 10px}
+@media(max-width:1000px){main{grid-template-columns:minmax(0,1fr)}aside{display:none}.tab{width:56px}.srch{width:130px}}
+@media(max-width:620px){.tabs{display:none}nav{grid-template-columns:1fr auto}}
+@media(prefers-reduced-motion:reduce){#toast{transition:none}}
+#mn{display:none}
+.lw2{position:relative;flex:1;display:flex}.lw2>button{flex:1}
+.rx{position:absolute;bottom:100%;left:0;background:var(--card);box-shadow:0 2px 12px #0005;border-radius:30px;padding:4px 6px;display:none;gap:2px;z-index:5}
+.lw2:hover .rx,.lw2:focus-within .rx{display:flex}.rx button{flex:none!important;width:40px;font-size:24px;padding:2px!important}
+#v-roast input{width:100%;padding:12px;border:1px solid var(--ln);border-radius:8px;font:inherit;background:var(--card);color:var(--tx);margin-bottom:10px}
+.rr{display:flex;gap:8px;flex-wrap:wrap}.rr .btn{width:auto;flex:1;font-size:15px;padding:10px}
+#rout{margin-top:14px;padding:14px;border-radius:10px;background:var(--hv);font-size:17px;display:none}
+.ro{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--ln)}
+.ro input{width:20px;height:20px}details{border-top:1px solid var(--ln);padding:10px 0}summary{cursor:pointer;font-weight:600}details p{margin-top:6px;color:var(--tx2)}
+.legal p{margin:10px 0}h2{font-size:22px}
+#pop{position:fixed;inset:0;background:#0007;z-index:70;display:grid;place-items:center;padding:16px}#pop[hidden]{display:none}
+.pc{background:var(--card);border-radius:18px;max-width:420px;width:100%;padding:28px 24px 0;text-align:center;box-shadow:0 10px 40px #000a;overflow:hidden;animation:pin .35s cubic-bezier(.2,1.4,.4,1)}
+.pe{font-size:72px;line-height:1.2;animation:bn 1s infinite alternate}
+.pc h3{font-size:22px;color:var(--bl);padding:4px}.pc p{font-size:18px;margin:8px 0 18px;line-height:1.5}
+.pb{display:flex;gap:8px}.pb .btn{font-size:15px;padding:10px}
+.pt{height:6px;margin:20px -24px 0;background:var(--hv)}.pt i{display:block;height:100%;background:var(--rd);width:100%}
+@keyframes pin{from{transform:scale(.5) rotate(-4deg);opacity:0}}@keyframes bn{to{transform:translateY(-10px) rotate(8deg)}}@keyframes shr{to{width:0}}
+@media(prefers-reduced-motion:reduce){.pc,.pe{animation:none}}
+@media(max-width:1000px){#mn{display:block}#lm.open{display:block;position:fixed;top:56px;left:0;right:0;bottom:0;max-height:none;background:var(--bg);z-index:30;padding:12px}}
+</style>
+</head>
+<body>
+
+<div id="login">
+ <div class="lw">
+  <div>
+   <img class="big" src="assets/logo.png" alt="Fakebook – যেখানে সবই ভুয়া, শুধু সার্কাজমটা আসল">
+  </div>
+  <div class="card lf">
+   <input id="u" placeholder="ইমেইল বা ফোন নম্বর (যেটা মনে থাকে)" aria-label="ইমেইল">
+   <input id="p" type="password" placeholder="পাসওয়ার্ড (‘123456’ দিলেও চলবে)" aria-label="পাসওয়ার্ড">
+   <button class="btn" id="go">লগ ইন করো</button>
+   <a id="forgot">পাসওয়ার্ড ভুলে গেছ? ভালোই তো, নতুন জীবন শুরু করো।</a>
+   <hr style="border:0;border-top:1px solid var(--ln);margin:12px 0 20px">
+   <div style="text-align:center"><button class="btn gr" id="reg">নতুন অ্যাকাউন্ট খোলো</button></div>
+   <p style="text-align:center;font-size:13px;color:var(--tx2);margin-top:14px">কোনো ডেটা সংরক্ষণ হয় না। এটা পুরোটাই মজা।</p>
+  </div>
+ </div>
+</div>
+
+<nav>
+ <div class="nl"><button class="ib" id="mn" aria-label="মেনু">☰</button><img src="assets/icon.png" alt="Fakebook" data-v="home" style="cursor:pointer"><input class="srch" placeholder="Fakebook-এ খোঁজো (পাবে না)" aria-label="সার্চ" id="sr"></div>
+ <div class="tabs">
+  <button class="tab on" data-v="home" title="হোম">🏠</button>
+  <button class="tab" title="বন্ধু" data-v="friends">👥</button>
+  <button class="tab" title="ভিডিও" data-v="video">▶️</button>
+  <button class="tab" title="মার্কেটপ্লেস" data-v="market">🏪</button>
+ </div>
+ <div class="nr">
+  <button class="ib" id="msgb" aria-label="মেসেঞ্জার">💬<span class="bdg">99+</span></button>
+  <button class="ib" id="bell">🔔<span class="bdg">7</span></button>
+  <button class="ib" id="me" data-v="profile" aria-label="প্রোফাইল"><span class="av" style="background:#7b1fa2;width:40px;height:40px">আ</span></button>
+  <div class="dd" id="dd">
+   <h4>নোটিফিকেশন</h4>
+   <p>🙄 রাকিব তোমার ১৪ বছর আগের ছবিতে লাইক দিয়েছে।</p>
+   <p>🎂 আজ কারও জন্মদিন নেই। নিজেকে শুভেচ্ছা জানাও।</p>
+   <p>👀 ৩৮৭ জন তোমার প্রোফাইল দেখেনি।</p>
+   <p>📢 তুমি ‘আমার ক্লাস গ্রুপ ২০১৪’-এ ট্যাগ হয়েছ। কেউ কিছু বলেনি।</p>
+  </div>
+ </div>
+</nav>
+
+<main>
+ <aside id="lm" aria-label="মেনু">
+  <button class="mi" data-v="profile"><span class="av" style="background:#7b1fa2;width:36px;height:36px">আ</span><b>আমি (ভুয়া নামে)</b></button>
+  <button class="mi" data-v="friends"><span>👥</span>বন্ধুরা (যাদের চিনি না)</button>
+  <button class="mi" data-t="স্মৃতি: ২০১৬-তে তুমি যা ভাবতে, তা আজ লজ্জার।"><span>🕰️</span>পুরনো লজ্জা</button>
+  <button class="mi" data-t="সেভ করা পোস্ট: কখনো খোলা হবে না।"><span>🔖</span>সেভ করে ভুলে যাওয়া</button>
+  <button class="mi" data-t="গ্রুপ: ‘সবাই সবাইকে বিক্রি করছে’।"><span>👪</span>গ্রুপ (মিউট করা)</button>
+  <button class="mi" data-t="পেজ: ২ লাইক, ১টা নিজের, ১টা মায়ের।"><span>🚩</span>পেজ</button>
+  <button class="mi" data-t="ইভেন্ট: ‘যাব’ চাপ দিলে ‘যাব না’ বুঝতে হয়।"><span>📅</span>ইভেন্ট (যাব না)</button>
+  <button class="mi" id="dm"><span>🌙</span>থিম বদলাও (ফোনের সেটিং দেখো)</button>
+ </aside>
+
+<div id="center">
+ <section id="v-home" class="view on" aria-label="ফিড">
+  <div class="card stories">
+   <button class="st" style="background:linear-gradient(160deg,#1877f2,#7b1fa2)" data-t="স্টোরি দিলে ২৪ ঘণ্টা পর কেউ দেখেনি প্রমাণ হবে।"><big>➕</big>স্টোরি বানাও</button>
+   <button class="st" style="background:linear-gradient(160deg,#ef6c00,#c62828)" data-t="ফিটনেস স্টোরি: জিমে যায়নি, শুধু ছবি তুলেছে।"><big>🏋️</big>জিমের ছবি (জিম বন্ধ)</button>
+   <button class="st" style="background:linear-gradient(160deg,#2e7d32,#00695c)" data-t="কক্সবাজার থেকে লাইভ… ঘরে বসে।"><big>🏖️</big>ঘুরতে গেছি (ফিল্টারে)</button>
+   <button class="st" style="background:linear-gradient(160deg,#6a1b9a,#283593)" data-t="রাত ৩টা: ‘কেউ আছো?’ কেউ নেই।"><big>🌃</big>রাত ৩টার দার্শনিক</button>
+   <button class="st" style="background:linear-gradient(160deg,#00838f,#1565c0)" data-t="ভাইরাল হতে গিয়ে ভ্যাট হয়ে গেছে।"><big>🍳</big>রান্নার রিলস</button>
+  </div>
+
+  <div class="card comp">
+   <div class="crow"><span class="av" style="background:#7b1fa2">আ</span><input class="cin" id="ci" placeholder="মনে কী চলছে? (কেউ জানতে চায়নি, তবু বলো)" aria-label="নতুন পোস্ট"></div>
+   <div class="cact">
+    <button data-t="লাইভ যাবে? দর্শক: তুমি আর তোমার মা।">🔴 লাইভ ভিডিও</button>
+    <button data-t="ছবি আপলোড: ৫টা তুলে ১টা দেওয়া হয়, ১টাও ঠিক না।">🖼️ ছবি/ভিডিও</button>
+    <button id="feel">😏 অনুভূতি</button>
+   </div>
+  </div>
+
+  <div id="feed"></div>
+  <div class="card" style="padding:20px;text-align:center">আর কোনো পোস্ট নেই। এবার ফোন রেখে বাইরে গিয়ে ঘাস ছোঁও। 🌱</div>
+ </section>
+
+ <section id="v-profile" class="view" aria-label="প্রোফাইল">
+  <div class="card">
+   <div class="cover">কভার ফটো: মেঘলা আকাশ (গুগল থেকে নেওয়া)</div>
+   <div class="pinfo"><span class="av" style="background:#7b1fa2;width:110px;height:110px;font-size:44px;border:4px solid var(--card)">আ</span>
+    <div style="flex:1"><h2>আমি (ভুয়া নামে)</h2><p class="mut">বন্ধু ৫০০০ জন, কথা হয় ৩ জনের সাথে</p></div>
+    <button class="btn" style="width:auto;padding:8px 14px;font-size:15px" data-t="প্রোফাইল এডিট করলেও তুমি একই থাকবে।">✏️ প্রোফাইল এডিট</button></div>
+  </div>
+  <div class="card" style="padding:16px"><h3 style="padding:0 0 8px">পরিচিতি</h3>
+   <p>🎓 পড়াশোনা করেছেন: গুগল ইউনিভার্সিটি (ডিগ্রি ছাড়া)</p>
+   <p>💼 কাজ করেন: ফেসবুকে স্ক্রল করা, ফুল টাইম</p>
+   <p>❤️ সম্পর্ক: সব জটিল, মূলত ওয়াইফাইয়ের সাথে</p>
+   <p>📍 থাকেন: বিছানায়</p></div>
+  <div id="pfeed"></div>
+ </section>
+
+ <section id="v-friends" class="view" aria-label="বন্ধু">
+  <div class="card" style="padding:16px"><h3 style="padding:0 0 8px">যাদের চিনতে পারো (পারো না)</h3><div class="grid" id="fgrid"></div></div>
+ </section>
+
+ <section id="v-market" class="view" aria-label="মার্কেটপ্লেস">
+  <div class="card" style="padding:16px"><h3 style="padding:0 0 8px">মার্কেটপ্লেস: সব বিক্রি হবে, কিছু কেনা হবে না</h3><div class="grid" id="mgrid"></div></div>
+ </section>
+
+ <section id="v-video" class="view" aria-label="ভিডিও">
+  <div id="vlist"></div>
+ </section>
+ </div>
+
+ <aside aria-label="স্পনসর্ড ও কন্টাক্ট">
+  <h3>স্পনসর্ড (টাকা দিয়ে বিরক্ত করা)</h3>
+  <div class="sp"><div class="th">💰</div><div><b>৯৯৯ টাকায় কোটিপতি!</b><br><small>fake-crypto-guru.bd</small></div></div>
+  <div class="sp"><div class="th" style="background:#81d4fa">🧴</div><div><b>৭ দিনে ফর্সা, ৮ম দিনে পুরনো রঙ</b><br><small>jadu-cream.com</small></div></div>
+  <hr style="border:0;border-top:1px solid var(--ln);margin:12px 0">
+  <h3>কন্টাক্ট</h3>
+  <button class="mi" data-chat="রাফি"><span class="av on-dot" style="background:#e65100;width:36px;height:36px">রা</span>রাফি (অনলাইন, রিপ্লাই দেবে না)</button>
+  <button class="mi" data-chat="সাদিয়া"><span class="av on-dot" style="background:#00695c;width:36px;height:36px">সা</span>সাদিয়া (অ্যাকটিভ নাউ…)</button>
+  <button class="mi" data-chat="Fakebook টিম"><span class="av on-dot" style="background:#1565c0;width:36px;height:36px">ফে</span>Fakebook টিম</button>
+  <button class="mi" data-chat="তানভীর ভাই"><span class="av on-dot" style="background:#6a1b9a;width:36px;height:36px">তা</span>তানভীর ভাই (সাবধান)</button>
+ </aside>
+</main>
+
+<footer>Fakebook একটি প্যারোডি ওয়েবসাইট, মজার জন্য বানানো। Facebook বা Meta-র সঙ্গে এর কোনো সম্পর্ক নেই। সব চরিত্র ও ঘটনা কাল্পনিক।</footer>
+<div id="chat" hidden><div class="chh"><b id="chn">চ্যাট</b><button id="chx" aria-label="চ্যাট বন্ধ করো">✕</button></div><div id="chm" aria-live="polite"></div><input id="chi" class="cin" placeholder="মেসেজ লেখো (সিন হবে)" aria-label="মেসেজ"></div>
+<div id="ck" class="card"><b>🍪 কুকি নোটিশ</b><p>আমরা তোমার সব জানি, তবু ভদ্রতা করে জিজ্ঞেস করছি।</p><button class="btn ckb" style="padding:8px">মেনে নিলাম</button><button class="btn ckb" style="padding:8px;background:var(--hv);color:var(--tx);margin-top:6px">আর কোনো উপায় নেই</button></div>
+<div id="pop" hidden><div class="pc" role="alertdialog" aria-live="assertive"><div class="pe" id="pe">🔥</div><h3 id="ph2"></h3><p id="pm"></p><div class="pb"><button class="btn" id="pk">হজম করলাম 😤</button><button class="btn" id="pn" style="background:#e65100">আরেকটা দাও 🔥</button></div><div class="pt"><i id="pi"></i></div></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+var $=function(s){return document.querySelector(s)};
+var pt,EM=["🔥","😏","🤡","💀","🙄","😎","🫠","🤌"],HD=["রোস্ট অ্যালার্ট!","সত্যি কথা বলি…","Fakebook বলছে:","এটা তোমাকেই বলছি","একটু সিরিয়াস হই?"];
+function toast(m){$("#pe").textContent=rnd(EM);$("#ph2").textContent=rnd(HD);$("#pm").textContent=m;$("#pop").hidden=false;var b=$("#pi");b.style.animation="none";void b.offsetWidth;b.style.animation="shr 9s linear forwards";clearTimeout(pt);pt=setTimeout(closePop,9000)}
+function closePop(){$("#pop").hidden=true}
+function rnd(a){return a[Math.floor(Math.random()*a.length)]}
+var likeMsgs=["লাইক দিলে। কিন্তু মন থেকে না, জানি।","লাইক দিলে? এবার কমেন্টও করো, ভদ্রতা বলে কিছু আছে।","তোমার লাইক পোস্টকারীর জীবনের সবচেয়ে বড় অর্জন।","লাইক পড়েছে! এবার সে ভাববে সে বিখ্যাত।"];
+var users=[
+ {n:"ফেসবুক বিশেষজ্ঞ চাচা",c:"#c62828",t:"এইমাত্র",x:"জরুরি! এই পোস্ট ১০ জনকে শেয়ার না করলে আপনার ফোনের চার্জ ১% এ নেমে যাবে। আমি বিশ্বাস করিনি, তাই এখন চার্জার খুঁজছি।",p:"📱🔋😱",pb:"linear-gradient(135deg,#ef6c00,#c62828)",l:1203,cm:[["রিমি","শেয়ার করলাম চাচা, চার্জ ঠিক আছে তো?"],["সুমন","চাচা, আপনি WiFi-র পাসওয়ার্ডটা আগে দিন।"]]},
+ {n:"সাদমান (ফিলোসফার)",c:"#00695c",t:"৩ মিনিট আগে",x:"Feeling blessed 🙏 ছাদে দাঁড়িয়ে সূর্যাস্ত দেখছি। (আসলে ছাদে কাপড় তুলতে এসেছিলাম।)",p:"🌇",pb:"linear-gradient(135deg,#ff8f00,#6a1b9a)",l:48,cm:[["মা","ছেলে, কাপড়গুলো নিচে নামা।"]]},
+ {n:"Fakebook অ্যাডমিন",c:"#1565c0",t:"১ ঘণ্টা আগে",x:"নতুন ফিচার: এখন থেকে আপনার সব পোস্ট ‘আমার মতে’ ট্যাগসহ দেখা যাবে, যাতে কেউ সিরিয়াসলি না নেয়। Fakebook-এ সব ভুয়া, শুধু সার্কাজমটা আসল।",p:"🤡",pb:"linear-gradient(135deg,#1877f2,#00bcd4)",l:9999,cm:[["রাকিব","অ্যাডমিন ভাই, পাসওয়ার্ড ভুলে গেছি।"],["অ্যাডমিন","আমরাও 🙂"]]},
+ {n:"মোটিভেশনাল মামা",c:"#6a1b9a",t:"২ ঘণ্টা আগে",x:"ভোর ৫টায় উঠো, ঠান্ডা পানিতে গোসল করো, ১০ কিলোমিটার দৌড়াও, তারপর সফল হও। (এই পোস্ট রাত ২টায় লেখা।)",p:"🏃‍♂️💪",pb:"linear-gradient(135deg,#2e7d32,#00695c)",l:312,cm:[["তানভীর","মামা, আপনি তো দুপুর ১২টায় ঘুম থেকে ওঠেন!"]]},
+ {n:"রিলস কিং রাজু",c:"#e65100",t:"গতকাল",x:"১০ সেকেন্ডের রিলসে ৩ ঘণ্টা সময় লেগেছে, লাইক পেয়েছি ২টা। একটা আমার, আরেকটা আমার ফেক আইডির। 😎",p:"🎬",pb:"linear-gradient(135deg,#283593,#c62828)",l:2,cm:[["সাদিয়া","ভাই ফেক আইডিটা আমাকে দাও, আমারও লাগবে।"]]}
+];
+var RX=[["👍","লাইক","লাইক দিয়ে ভাবছ সম্পর্ক রক্ষা হলো?"],["❤️","ভালোবাসা","পোস্টে হার্ট দিলে, বাস্তবে একটা ফোনও করো না।"],["😂","হাহা","হাসলে? তোমার জীবনটাই তো বড় কমেডি।"],["😮","ওয়াও","ওয়াও দিলে, কারণ পড়োনি।"],["😢","দুঃখ","দুঃখ পেলে? স্ক্রল করতে থাকো, ঠিক হয়ে যাবে।"],["😡","রাগ","রাগ করলে ফোনটা ছুড়ো না, ওটা তোমার ওয়াইফাইয়ের একমাত্র সঙ্গী।"]];
+var feed=$("#feed");
+function mk(u,mine){
+ var d=document.createElement("article");d.className="card";var liked=false,n=u.l;
+ d.innerHTML='<div class="ph"><span class="av" style="background:'+u.c+'">'+u.n.charAt(0)+'</span><div><b>'+u.n+'</b><small>'+u.t+' · 🌍</small></div></div>'
+ +'<div class="body"></div>'+(u.p?'<div class="pic" style="background:'+u.pb+'">'+u.p+'</div>':'')
+ +'<div class="cnt"><span class="lc"></span><span class="cc"></span></div>'
+ +'<div class="acts"><span class="lw2"><span class="rx">'+RX.map(function(r,i){return'<button data-i="'+i+'" title="'+r[1]+'">'+r[0]+'</button>'}).join("")+'</span><button class="lk">👍 লাইক</button></span><button class="cb">💬 কমেন্ট</button><button class="sh">↗️ শেয়ার</button></div>'
+ +'<div class="cms"><div class="cl"></div><div class="cf"><span class="av" style="background:#7b1fa2;width:32px;height:32px;font-size:13px">আ</span><input class="cin" placeholder="কিছু একটা লেখো…" aria-label="কমেন্ট"></div></div>';
+ d.querySelector(".body").textContent=u.x;
+ var lc=d.querySelector(".lc"),cc=d.querySelector(".cc"),cl=d.querySelector(".cl"),cnt=u.cm.length;
+ function up(){lc.textContent="👍 "+n.toLocaleString("bn-BD");cc.textContent=cnt.toLocaleString("bn-BD")+"টি কমেন্ট"}
+ function addC(a,b){var c=document.createElement("div");c.className="cm";c.innerHTML='<span class="av" style="background:#546e7a;width:32px;height:32px;font-size:13px"></span><div><b></b><span></span></div>';c.querySelector(".av").textContent=a.charAt(0);c.querySelector("b").textContent=a;c.querySelector("span:last-child").textContent=b;cl.appendChild(c)}
+ u.cm.forEach(function(c){addC(c[0],c[1])});up();
+ var lk=d.querySelector(".lk");
+ lk.onclick=function(){liked=!liked;n+=liked?1:-1;lk.classList.toggle("on",liked);lk.textContent="👍 লাইক";up();toast(liked?rnd(likeMsgs):"লাইক তুলে নিলে? ভীতু।")};
+ d.querySelectorAll(".rx button").forEach(function(b){b.onclick=function(ev){ev.stopPropagation();var r=RX[b.dataset.i];if(!liked){liked=true;n++}lk.classList.add("on");lk.textContent=r[0]+" "+r[1];up();toast(r[2])}});
+ d.querySelector(".cb").onclick=function(){d.querySelector(".cin").focus()};
+ d.querySelector(".sh").onclick=function(){toast("শেয়ার করলে। এবার ‘আমি শেয়ার করিনি’ বলার উপায় নেই।")};
+ d.querySelector(".cf .cin").onkeydown=function(e){if(e.key==="Enter"&&this.value.trim()){var tx=this.value.trim().slice(0,200);addC("আমি (ভুয়া)",tx);cnt++;up();this.value="";var w=rnd(NAMES);setTimeout(function(){ask("পোস্ট: "+u.x+" | কমেন্ট: "+tx,w,[],"comment").then(function(r){addC(w,r);cnt++;up()})},1000)}};
+ return d}
+users.forEach(function(u){feed.appendChild(mk(u))});
+var ci=$("#ci");
+ci.onkeydown=function(e){if(e.key==="Enter"&&ci.value.trim()){feed.insertBefore(mk({n:"আমি (ভুয়া নামে)",c:"#7b1fa2",t:"এইমাত্র",x:ci.value.trim(),l:0,cm:[]}),feed.firstChild);ci.value="";toast("পোস্ট হয়েছে! এখন ১ মিনিট পরপর ফোন দেখো, কেউ লাইক দেয়নি।")}};
+document.addEventListener("click",function(e){var t=e.target.closest("[data-t]");if(t)toast(t.getAttribute("data-t"))});
+$("#bell").onclick=function(e){e.stopPropagation();$("#dd").classList.toggle("show")};
+document.addEventListener("click",function(e){if(!e.target.closest("#bell,#dd"))$("#dd").classList.remove("show")});
+$("#feel").onclick=function(){toast(rnd(["অনুভূতি: ক্লান্ত, কিন্তু ফোন ছাড়তে পারছি না। 😩","অনুভূতি: ধন্য (পোস্টের শেষে একটা কাজের কথা নেই)।","অনুভূতি: বিরক্ত, কিন্তু স্ক্রল করছি।"]))};
+$("#sr").onkeydown=function(e){if(e.key==="Enter"){toast("‘"+this.value+"’ পাওয়া যায়নি। জীবনেও কিছু পাওয়া যায় না।");this.value=""}};
+function login(){startRoasts();$("#login").classList.add("hide");toast("স্বাগতম! এখানে পাসওয়ার্ড কেউ চেক করে না, জীবনের মতোই।")}
+$("#go").onclick=login;$("#reg").onclick=login;
+$("#p").onkeydown=function(e){if(e.key==="Enter")login()};
+$("#forgot").onclick=function(){toast("পাসওয়ার্ড রিসেট লিংক পাঠানো হয়েছে… স্প্যামে খোঁজো। পাবে না।")};
+
+function show(v){document.querySelectorAll(".view").forEach(function(x){x.classList.toggle("on",x.id==="v-"+v)});document.querySelectorAll(".tab").forEach(function(t){t.classList.toggle("on",t.dataset.v===v)});window.scrollTo(0,0);$("#lm").classList.remove("open")}
+document.addEventListener("click",function(e){var t=e.target.closest("[data-v]");if(t)show(t.dataset.v)});
+[{n:"আমি (ভুয়া নামে)",c:"#7b1fa2",t:"৫ মিনিট আগে",x:"আজ ঠিক করেছি আর ফেসবুক ব্যবহার করব না।",l:0,cm:[["মা","বাবা, খেয়েছিস?"]]},{n:"আমি (ভুয়া নামে)",c:"#7b1fa2",t:"২০১৫",x:"প্রোফাইল পিকচার আপডেট করলাম। ১ লাইক, সেটাও আমার নিজের।",p:"🤳",pb:"linear-gradient(135deg,#ec407a,#7b1fa2)",l:1,cm:[["সুমন","ভাই, এটা কার ছবি?"]]}].forEach(function(u){$("#pfeed").appendChild(mk(u))});
+[["রাকিব","#c62828"],["তানিয়া","#00695c"],["জুবায়ের","#1565c0"],["নুসরাত","#6a1b9a"],["ফাহিম","#e65100"],["মিম","#ad1457"]].forEach(function(f){var d=document.createElement("div");d.className="gc";d.innerHTML='<div class="th" style="background:'+f[1]+'">'+f[0].charAt(0)+'</div><div class="gb"><b></b><small>সাধারণ বন্ধু ০ জন (সবাই ভুয়া)</small><button class="sb">বন্ধু হও</button><button class="sb2 pk">👉 পোক করো</button><button class="sb2 rm">সরিয়ে দাও</button></div>';d.querySelector("b").textContent=f[0];d.querySelector(".pk").onclick=function(){toast("পোক করলে। ও ভাববে ভূত, আর ব্লক করবে।")};var a=d.querySelector(".sb");a.onclick=function(){a.textContent="অনুরোধ পাঠানো হয়েছে (দেখবে না)";a.disabled=true;toast("অনুরোধ গেছে। উত্তর আসবে ২০৩২ সালে।")};d.querySelector(".rm").onclick=function(){d.remove();toast("সরিয়ে দিলে। ও কিছুই টের পাবে না।")};$("#fgrid").appendChild(d)});
+[["📱","iPhone 15 (ছবিটা ফোনের, ফোন না)","৳ ১,০০০","#546e7a"],["🚲","সাইকেল, একবার চালানো","৳ ৫০,০০০","#2e7d32"],["💔","ব্যবহৃত প্রেম (অমীমাংসিত)","বিনামূল্যে","#c62828"],["👕","ঈদের জামা, একবার পরা, সাইজ ভুল","৳ ২,৫০০","#6a1b9a"],["📶","WiFi পাসওয়ার্ড (পাশের বাসার)","৳ ১০","#1565c0"],["🛋️","সোফা, তিনজন বসলে চতুর্থজন বন্ধু","৳ ৮,০০০","#e65100"]].forEach(function(i){var d=document.createElement("div");d.className="gc";d.innerHTML='<div class="th" style="background:'+i[3]+'">'+i[0]+'</div><div class="gb"><b></b><b style="color:var(--bl)"></b><button class="sb">দাম কত?</button></div>';d.querySelectorAll("b")[0].textContent=i[1];d.querySelectorAll("b")[1].textContent=i[2];d.querySelector(".sb").onclick=function(){toast("উত্তর: ইনবক্সে বলছি। (কেউ ইনবক্সে যায়নি)")};$("#mgrid").appendChild(d)});
+[["💰","১০ সেকেন্ডে ধনী হওয়ার উপায়","৩ ঘণ্টা ৪ মিনিট","linear-gradient(135deg,#ff8f00,#c62828)"],["🍳","ডিম ভাজার ১২টা রহস্য (৪ নম্বরটা শকিং)","১৮ মিনিট","linear-gradient(135deg,#00838f,#283593)"],["🐱","বিড়াল সিঁড়ি থেকে পড়ে গেল, আপনি বিশ্বাস করবেন না কী হলো","০৭ সেকেন্ড","linear-gradient(135deg,#6a1b9a,#ad1457)"]].forEach(function(v){var d=document.createElement("div");d.className="card vc";d.innerHTML='<div class="vt" style="background:'+v[3]+'">'+v[0]+'<div class="bar"></div></div><div class="vm"><b></b><br><small class="mut"></small></div>';d.querySelector("b").textContent=v[1];d.querySelector("small").textContent="দৈর্ঘ্য: "+v[2]+", ১.২ কোটি ভিউ (সব বট)";d.querySelector(".vt").onclick=function(){toast("বাফারিং… ৯৯%। চিরকাল ৯৯%।")};$("#vlist").appendChild(d)});
+var rep=["সিন করলাম। উত্তর দেওয়ার মতো কিছু পাইনি।","হু।","ওকে।","পরে বলছি। (কখনো না)","ভাই, এখন ব্যস্ত, রিলস দেখছি।","তুই কি শুধু ‘হাই’ লেখার জন্য এসেছিস?","টাকা চাইলে সরাসরি বল, ভূমিকা লাগবে না।","মেসেজ পড়ে হাসলাম। কিন্তু রিপ্লাই দেব না।"];
+function bub(t,me){var d=document.createElement("div");d.className="mg"+(me?" me":"");d.textContent=t;$("#chm").appendChild(d);$("#chm").scrollTop=1e5;return d}
+var cur="Fakebook বট",hist=[];
+function openChat(n){cur=n;hist=[];$("#chat").hidden=false;$("#chn").textContent=n;$("#chm").innerHTML="";bub("হ্যালো! আমি "+n+"। যা খুশি জিজ্ঞেস করো, সঠিক উত্তরও দেব, তবে খোঁচা দিয়ে। 😏",false);$("#chi").focus()}
+$("#msgb").onclick=function(){openChat("Fakebook বট")};
+$("#chx").onclick=function(){$("#chat").hidden=true};
+document.addEventListener("click",function(e){var c=e.target.closest("[data-chat]");if(c)openChat(c.dataset.chat)});
+$("#chi").onkeydown=function(e){if(e.key==="Enter"&&this.value.trim()){var v=this.value.trim().slice(0,300),who=cur;this.value="";bub(v,true);var sn=document.createElement("div");sn.className="sn";sn.textContent="✓✓ সিন করা হয়েছে";$("#chm").appendChild(sn);setTimeout(function(){var ty=bub("টাইপ করছে…",false);ask(v,who,hist.slice(-8),"chat").then(function(r){ty.textContent=r;hist.push({role:"user",content:v},{role:"assistant",content:r});$("#chm").scrollTop=1e5})},600)}};
+document.querySelectorAll(".ckb").forEach(function(b){b.onclick=function(){$("#ck").style.display="none";toast("ধন্যবাদ! তোমার সব তথ্য আগেই নেওয়া হয়ে গেছে।")}});
+var T=document.title;document.addEventListener("visibilitychange",function(){document.title=document.hidden?"ফিরে এসো 🥺 Fakebook তোমাকে মিস করছে":T});
+
+var NAMES=["রিমি","সুমন","মা","পাশের বাসার চাচা","রাকিব","ফেসবুক বিশেষজ্ঞ চাচা"];
+var ROASTS=["তুমি ফেসবুকে ঢুকেছ ‘এক মিনিটের জন্য’। এক ঘণ্টা আগে।","তোমার প্রোফাইল ছবি দেখে মনে হয়, ক্যামেরাও লজ্জা পেয়েছে।","স্ট্যাটাসে ‘ব্যস্ত’ লিখে তুমি ফেসবুকেই ব্যস্ত। কী অসাধারণ সময় ব্যবস্থাপনা!","৫০০০ বন্ধু, অথচ বিপদে ফোন করার মতো একজনও না। দারুণ পোর্টফোলিও।","তুমি ডায়েট শুরু করবে, সোমবার থেকে। প্রতি সোমবার।","তোমার ‘শেষ ক্ষমা’ ২০১৮-র। ভালো হিসাব রাখো তো!","তুমি ওয়াইফাই ছাড়া কিছু করতে পারো না, সেটাই তোমার সবচেয়ে বড় দক্ষতা।","লাইক পাওনি? অ্যালগরিদমকে দোষ দাও। নিজের কনটেন্ট দেখার দরকার নেই।","তোমার ‘আমি আর ফেসবুক চালাব না’ পোস্টটা ফেসবুকেই দেওয়া ছিল।","ফোনের ব্যাটারি ১%, তবু তুমি স্ক্রল করছ। এমন অধ্যবসায় চাকরিতে দেখাও।","গুড মর্নিং ছবি ফরওয়ার্ড করে তুমি কি দেশ বদলে দিচ্ছ?","তোমার সেলফি এডিটিং স্কিল চাকরিতে কাজে লাগবে। যদি চাকরি থাকত।"];
+var PER={"Fakebook বট":"তুমি Fakebook বট, সবকিছু রোস্ট করা মজার সার্কাস্টিক সহকারী","রাফি":"তুমি রাফি, ভীষণ অলস বন্ধু, সারাক্ষণ রিলস দেখো, উত্তর ছোট আর তাচ্ছিল্যপূর্ণ","সাদিয়া":"তুমি সাদিয়া, ড্রামা কুইন, প্রতিটা বিষয়কে নাটক বানাও","Fakebook টিম":"তুমি Fakebook কাস্টমার সাপোর্ট, ভদ্র ভাষায় সবাইকে ঘোরাও, কোনো সমস্যা সমাধান করো না","তানভীর ভাই":"তুমি তানভীর ভাই, প্রতিটা উত্তরের শেষে ধার চাও"};
+var PS={"রাফি":["(রিলস চলছে, পরে দেখি)","আরে থাম, রিলস শেষ হোক।"],"সাদিয়া":["ওহ মাই গড, কী নাটক! 🎭","আমার তো কান্না পাচ্ছে (ক্যামেরা অন করো)।"],"তানভীর ভাই":["যাই হোক, ৫০০ টাকা হবে?","আর হ্যাঁ, বিকাশে ৫০০ পাঠাও।"],"Fakebook টিম":["আপনার কল আমাদের কাছে গুরুত্বপূর্ণ। (না)","টিকিট নম্বর ০০০০। স্ট্যাটাস: ভুলে গেছি।"]};
+function bn(n){return String(n).replace(/\d/g,function(d){return"০১২৩৪৫৬৭৮৯".charAt(d)})}
+function en(t){return t.replace(/[০-৯]/g,function(d){return"০১২৩৪৫৬৭৮৯".indexOf(d)})}
+var RULES=[
+[/সময়|কয়টা|টাইম|\btime\b/,function(){return"এখন ঢাকায় "+new Date().toLocaleTimeString("bn-BD",{timeZone:"Asia/Dhaka",hour:"numeric",minute:"2-digit"})+"। সময় দেখে কী হবে, সময়ের কাজটাই তো করছ না।"}],
+[/তারিখ|কী বার|কি বার|\bdate\b|\bday\b/,function(){return"আজ "+new Date().toLocaleDateString("bn-BD",{timeZone:"Asia/Dhaka",weekday:"long",day:"numeric",month:"long",year:"numeric"})+"। ক্যালেন্ডার ফোনেই আছে, তবু এখানে জিজ্ঞেস করছ। বাহ!"}],
+[/^(hi|hello|hey|হাই|হ্যালো|সালাম|আসসালামু|কেমন|কি খবর|কী খবর)/,["হাই বলতে এত কষ্ট? আসল কথাটা বলো।","কেমন আছি? তোমার মেসেজ দেখার আগে ভালোই ছিলাম।"]],
+[/টাকা|ধার|বিকাশ|নগদ|লোন|bkash/,["টাকা? আমার কাছে শুধু লাইক আছে, ধার চাইলে দিতে পারি।","বিকাশে পাঠাব? আগে ব্যালেন্স দেখো, তারপর স্বপ্ন দেখো।"]],
+[/প্রেম|ভালোবাস|গার্লফ্রেন্ড|বয়ফ্রেন্ড|বউ|ক্রাশ|crush|বিয়ে/,["প্রেম করতে চাও? আগে নিজের প্রোফাইল ছবিটা বদলাও।","ক্রাশ তোমাকে সিন করেছে, এটাই তার সবচেয়ে বড় ভালোবাসা।"]],
+[/খেয়েছ|খেয়েছিস|ভাত|বিরিয়ানি|খাবার|ক্ষুধা|চা\b|কফি/,["খাওয়ার খবর ফেসবুকে নিও না, ফ্রিজ খুলে দেখো।","বিরিয়ানির ছবি দিয়ে ১০০ লাইক পাবে, খাওয়ার আগে ছবিটা তুলে নিও।"]],
+[/পড়া|পরীক্ষা|রেজাল্ট|সিজিপিএ|cgpa|ক্লাস|অ্যাসাইনমেন্ট/,["পড়াশোনা? বই খোলার আগে ফোন বন্ধ করো। হ্যাঁ, এখনই।","রেজাল্ট খারাপ? দোষ স্যারের, সিলেবাসের, আর ওয়াইফাইয়ের।"]],
+[/চাকরি|জব|ইন্টারভিউ|বেতন|ফ্রিল্যান্স/,["চাকরি পেতে সিভিতে ‘ফেসবুক এক্সপার্ট’ লিখে দাও।","ইন্টারভিউতে জিজ্ঞেস করলে বলো, আপনার একমাত্র দক্ষতা স্ক্রল করা।"]],
+[/ঘুম|টায়ার্ড|ক্লান্ত|রাত/,["রাত ৩টায় জেগে আছ আর ক্লান্তির কথা বলছ? ফোনটা রাখো।","ঘুম আসছে না? ফেসবুকে আরও এক ঘণ্টা স্ক্রল করলেই আসবে।"]],
+[/আবহাওয়া|বৃষ্টি|গরম|ঠান্ডা/,["আবহাওয়া জানতে জানালা খোলো, আমি আবহাওয়া অফিস না।","গরম লাগলে ফোনও গরম হয়, দুটোই তোমার স্ক্রল করার ফল।"]],
+[/তুমি কে|তুই কে|কে তুমি|নাম কী|তোমার নাম/,["আমি Fakebook-এর সবচেয়ে সৎ মানুষ, মানে একটা বট।","আমি কে? তোমার ফিডের একমাত্র বুদ্ধিমান জিনিস।"]],
+[/ধন্যবাদ|থ্যাংক|thanks/,["ধন্যবাদ নিলাম। বিলটা আলাদা আসবে।","স্বাগতম! এবার বাস্তব জীবনে কাউকে ধন্যবাদ দিয়ো।"]],
+[/বাই|টাটা|যাচ্ছি|\bbye\b/,["যাচ্ছ? ভালো। ৫ মিনিটে ফিরে আসবে, আমরা জানি।","বাই! যাওয়ার আগে একটা লাইক দিয়ে যাও।"]],
+[/কোড|প্রোগ্রাম|ওয়েবসাইট|বাগ|html|python|javascript/,["বাগ? ভাই, ওটা ফিচার। আমরা বলি ‘সার্কাজম মোড’।","কোড করতে চাও? আগে স্ট্যাক ওভারফ্লো থেকে কপি করার ধৈর্য শেখো।"]],
+[/সাহায্য|হেল্প|পারবে/,["সাহায্য চাও? আমরা শুধু মনোযোগ নষ্ট করতে পারি।","পারব, তবে করব না। এটা আমাদের নীতি।"]]
+];
+function local(m,who){
+ var rm=m.match(/^আমাকে রোস্ট করো:\s*(.*)$/);
+ if(rm){var nm=rm[1]||"তুমি";return rnd(["“"+nm+"”? নামটা শুনেই বুঝলাম, জীবনে লাইকের অভাব আছে।","“"+nm+"” নামে পরিচিত হয়ে তুমি যে সাহস দেখিয়েছ, তা অসাধারণ। বাকি কিছুই অসাধারণ না।","“"+nm+"” ভাই/আপু, তোমাকে রোস্ট করতে গেলে আগুনই বলে, ‘এটা আমার কাজ না।’"])}
+ var t=en(m).toLowerCase(),c=t.replace(/[x×]/g,"*").replace(/÷/g,"/"),r;
+ if(/^[\d\s.+\-*\/()%]+$/.test(c)&&/[+\-*\/%]/.test(c)){try{var v=Function("return "+c)();if(isFinite(v))return"উত্তর "+bn(Math.round(v*1e6)/1e6)+"। ক্যালকুলেটর ফোনেই আছে, ভাই। ভবিষ্যৎ নিয়ে চিন্তা হচ্ছে।"}catch(x){}}
+ for(var k=0;k<RULES.length;k++){if(RULES[k][0].test(t)){var a=RULES[k][1];r=typeof a==="function"?a():rnd(a);break}}
+ if(!r){var q=m.length>40?m.slice(0,40)+"…":m;r=rnd(["“"+q+"”? এত গভীর প্রশ্ন! উত্তরটা আছে গুগলে, আমি ছুটিতে।","পড়লাম। বুঝলাম না। বোঝার চেষ্টাও করলাম না।","তোমার কথা শুনে মনে হলো, তুমি আসলে কিছু বলোনি।","আমি ভাবলাম গুরুত্বপূর্ণ কিছু বলবে। ভুল ভেবেছিলাম।","“"+q+"” শুনে আমার সিস্টেম হ্যাং হয়ে গেছে। স্বাভাবিক, তোমার প্রশ্ন।"])}
+ return PS[who]?r+" "+rnd(PS[who]):r}
+function ask(msg,who,h,kind){var c=new AbortController(),to=setTimeout(function(){c.abort()},9000);
+ return fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:msg,persona:PER[who]||("ফেসবুকে কমেন্টকারী "+who),history:h||[],kind:kind||"chat"}),signal:c.signal})
+ .then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){clearTimeout(to);if(!j.reply)throw 0;return j.reply})
+ .catch(function(){clearTimeout(to);return new Promise(function(ok){setTimeout(function(){ok(local(msg,who))},700)})})}
+var CL=["#1877f2","#7b1fa2","#c62828","#00695c","#e65100","#283593"];
+function sec(k,h,sub,inner){var x=document.createElement("section");x.id="v-"+k;x.className="view";x.innerHTML='<div class="card" style="padding:16px"><h2></h2><p class="mut" style="margin-bottom:12px"></p>'+inner+'</div>';x.querySelector("h2").textContent=h;x.querySelector(".mut").textContent=sub;$("#center").appendChild(x);return x}
+var PG={
+groups:["👪 গ্রুপ","সব গ্রুপ মিউট করা, তবু নোটিফিকেশন আসে।",[["🤝","সবাই সবাইকে বিক্রি করছে","১২ লক্ষ সদস্য, ১১ লক্ষ বিক্রেতা, ক্রেতা ১ জন (সে-ও দাম জিজ্ঞেস করেছে)","জয়েন করো","জয়েন করলে। এখন প্রতি ৫ মিনিটে নোটিফিকেশন পাবে, মিউট করার বাটন খুঁজে পাবে না।"],["🍛","রান্নার রেসিপি গ্রুপ","সবাই ‘দারুণ হয়েছে’ লেখে, কেউ বানায় না","জয়েন করো","জয়েন করলে। রেসিপি সেভ করবে, রান্না করবে না, আমরা জানি।"],["💻","ফ্রিল্যান্সিং শিখে ডলার কামাই","কোর্সের দাম ২০ হাজার টাকা, আয় ০ ডলার","জয়েন করো","জয়েন করে কী হবে? আগে নিজের ডলারের ঘাটতি মেটাও।"],["📚","ক্লাস ২০১৪ ব্যাচ","শেষ মেসেজ ২০১৬-তে: ‘গ্রুপ লিভ নিস না’","জয়েন করো","গ্রুপে আছ, কথা বলো না। মৃত গ্রুপের জীবন্ত সদস্য!"],["🐱","হারানো বিড়াল-কুকুর","বিড়াল ফিরে এসেছে, পোস্ট ডিলিট হয়নি","জয়েন করো","বিড়ালটার সাথে তোমার সম্পর্কও এমন, থাকলেও না থাকার মতো।"]]],
+events:["📅 ইভেন্ট","‘যাব’ চাপা মানে ‘যাব না’। সবাই জানে।",[["💒","ফেক বিয়ের দাওয়াত","২০০ জন ‘যাব’, বাস্তবে আসবে ১৫ জন, খাবার শেষ ৪ মিনিটে","যাব","‘যাব’ চাপলে। আসলে তুমি বাসায় ঘুমাবে, আমরা জানি।"],["🏏","মহল্লার ক্রিকেট","৩০ জন ইন্টারেস্টেড, ৪ জন এসেছে, ২ জন ব্যাট নিয়ে","ইন্টারেস্টেড","ইন্টারেস্টেড হলে ঠিক আছে, এসো না, তবু।"],["🎓","ফ্রি সেমিনার: কীভাবে ধনী হবেন","ফ্রি, কিন্তু টিকিট ৫০০ টাকা","যাব","সেমিনার আয়োজকই ধনী হবেন, তুমি না।"],["🧘","মেডিটেশন ক্যাম্প","ফোন নিয়ে ঢুকতে হবে (ছবির জন্য)","যাব","মনের শান্তি খুঁজছ? ফোন রেখে এসো, ফোনই অশান্তির মূল।"]]],
+memories:["🕰️ পুরনো লজ্জা","ফেসবুক তোমার পুরনো লজ্জা মনে করিয়ে দেয়, বিনামূল্যে।",[["📸","১৪ বছর আগের আজ","তুমি লিখেছিলে ‘লাইফ ইজ বিউটিফুল’। আজ তুমি ক্লান্ত।","দেখো","দেখে কী হবে? অতীত বদলাবে না, শুধু লজ্জা বাড়বে।"],["🧑‍🤝‍🧑","৮ বছর আগে","এই ছবির ৫ জনের ৫ জনই এখন আনফ্রেন্ড","শেয়ার করো","শেয়ার করলে আরও ৩ জন আনফ্রেন্ড হবে।"],["💬","৫ বছর আগে","‘আমি আর ফেসবুক চালাব না’ পোস্ট করেছিলে। সফল হওনি।","দেখো","সফল না হওয়াই তোমার সবচেয়ে ধারাবাহিক গুণ।"]]],
+saved:["🔖 সেভ করে ভুলে যাওয়া","সেভ করা মানে পড়া না, মনে রেখো।",[["💪","৫ মিনিটে ওজন কমানোর উপায়","সেভ: ২০১৯, খোলা: কখনো না","খোলো","খুললে? আজও ব্যায়াম করবে না, শুধু পড়বে।"],["🍳","১০ ধরনের ডিমের রেসিপি","ডিম এখনো ফ্রিজে","খোলো","ডিমগুলো ফ্রিজেই থাকবে, ভাগ্য ভালো হলে আরও ১ মাস।"],["💼","ইন্টারভিউয়ে সফল হওয়ার টিপস","চাকরি এখনো হয়নি","খোলো","টিপস সেভ করেছ, প্র্যাকটিস করোনি।"]]],
+birthdays:["🎂 জন্মদিন","আজ ১২ জনের জন্মদিন। শুভেচ্ছা কপি-পেস্ট করো।",[["🎉","রাকিব (আজ)","কমেন্টে সবাই লিখবে ‘শুভ জন্মদিন’, সে উত্তরে লিখবে ‘ধন্যবাদ সবাইকে’","শুভেচ্ছা জানাও","একই লাইন ১২০ জনের সাথে কপি-পেস্ট করলে।"],["🎈","তানিয়া (আজ)","গত বছর তুমি উইশ করোনি, সে মনে রেখেছে","শুভেচ্ছা জানাও","দেরি করে উইশ করলে ‘বেলেটেড’ লিখে বাঁচো।"],["🎁","মিম (কাল)","তুমি আজই বলে রাখো, কাল ভুলে যাবে","রিমাইন্ডার দাও","রিমাইন্ডার দিলেও ভুলে যাবে, আমরা জানি।"]]],
+games:["🎮 গেমস","সময় নষ্টের সবচেয়ে সুন্দর উপায়।",[["🍬","ক্যান্ডি ক্রাশ","বন্ধুকে ইনভাইট করলে ৫টা লাইফ, বন্ধু তোমাকে ব্লক করবে","খেলো","খেলতে খেলতে বুঝবে, জীবনও এমন, শেষ নেই।"],["🌾","ফার্ম ভিলেজ","তোমার ফসল শুকিয়ে গেছে, বাস্তবের জমিও","খেলো","ভার্চুয়াল ফসল বাঁচাতে গিয়ে বাস্তব ক্ষুধা ভুলে যেয়ো না।"],["🃏","লুডু","হারলে মোবাইল আছাড় দেওয়া ফ্রি","খেলো","হারার পর বলবে ‘ডাইস ভুয়া’। হ্যাঁ, ডাইসই তো দোষী!"]]],
+about:["ℹ️ আমাদের সম্পর্কে","আমাদের টিমের পরিচয়, যাদের অস্তিত্ব নিয়ে প্রশ্ন আছে।",[["😴","সিইও","সবসময় ঘুমিয়ে থাকেন, সিদ্ধান্ত স্বপ্নে নেন","যোগাযোগ","যোগাযোগ করলে? ‘এই নম্বরটি বন্ধ আছে’। এটাই আমাদের উত্তর।"],["⌨️","সিটিও","Ctrl+C আর Ctrl+V-তে মাস্টার্স","যোগাযোগ","তার কোড চলে। কেন চলে, সে নিজেও জানে না।"],["📞","কাস্টমার কেয়ার","আপনার কল সারিতে আছে, অবস্থান: ২৩৪৫৬তম","যোগাযোগ","২৩৪৫৫ জনের পরে তোমার পালা। অপেক্ষা করো।"]]]
+};
+Object.keys(PG).forEach(function(k){var d=PG[k],x=sec(k,d[0],d[1],'<div class="grid">'+d[2].map(function(c,i){return'<div class="gc"><div class="th" style="background:'+CL[i%6]+'">'+c[0]+'</div><div class="gb"><b>'+c[1]+'</b><small>'+c[2]+'</small><button class="sb" data-r="'+i+'">'+c[3]+'</button></div></div>'}).join("")+'</div>');x.querySelectorAll("[data-r]").forEach(function(b){b.onclick=function(){toast(d[2][b.dataset.r][4])}})});
+var NT=[["👀","কেউ তোমার প্রোফাইল দেখেনি (গত ৩০ দিনে)","দেখেনি, কারণ দেখার মতো কিছু নেই।"],["🎉","তোমার ২০১৬-র পোস্টে একটা বট ‘নাইস’ কমেন্ট করেছে","বট তোমার একমাত্র ফ্যান, এটাই সত্যি।"],["📣","‘ক্লাস ২০১৪’ গ্রুপে ৯৯+ মেসেজ, সবই ‘গুড মর্নিং’","গুড মর্নিং! কিন্তু তোমার তো দিনই খারাপ।"],["🧑","৩ জন তোমাকে ট্যাগ করেছে: ‘ভাই ধার দে’ টাইপের পোস্টে","ধার চাইলে ব্লক করো, না চাইলে তবুও করো।"],["📉","তোমার পোস্টের রিচ কমেছে। কারণ: কনটেন্ট","অ্যালগরিদম নির্দোষ, কনটেন্টই অপরাধী।"],["🔔","মনে করিয়ে দিচ্ছি: তুমি ফোন চালাচ্ছ","ধন্যবাদ, আমরা জানি। চালিয়ে যাও।"],["🛒","সেভ করা জিনিসটা এখনো কেনা হয়নি","কেনা হবে না, কারণ ‘দাম কত?’ এখনো উত্তরহীন।"]];
+sec("notifs","🔔 নোটিফিকেশন","১০০০টা পেয়েছ, ৯৯৯টা অকাজের।",NT.map(function(n,i){return'<button class="mi" data-n="'+i+'"><span>'+n[0]+'</span>'+n[1]+'</button>'}).join("")).querySelectorAll("[data-n]").forEach(function(b){b.onclick=function(){toast(NT[b.dataset.n][2])}});
+var ST=[["গোপনীয়তা: সবাই দেখতে পাবে (ডিফল্ট)",1,"গোপনীয়তা বদলালে? ভালো, এখন পাশের বাসার চাচাও জানবে তুমি কী খাও।"],["লোকেশন: সবসময় চালু",1,"লোকেশন বন্ধ করলে আমরা অন্য উপায়ে জেনে নেব।"],["নোটিফিকেশন: ১০০০টি/দিন",1,"নোটিফিকেশন বন্ধ করলে তুমি আরও একা লাগবে।"],["অন্যদের মেসেজ ‘সিন’ দেখানো",1,"সিন বন্ধ করলে ভিতু, চালু করলে অভদ্র। জীবন কঠিন।"],["অ্যাকাউন্ট সাময়িক বন্ধ",0,"৫ মিনিটেই ফিরে আসবে, আমরা জানি।"]];
+var sx=sec("settings","⚙️ সেটিংস","যা-ই বদলাও, ফলাফল একই।",ST.map(function(t,i){return'<label class="ro"><span>'+t[0]+'</span><input type="checkbox" data-s="'+i+'"'+(t[1]?" checked":"")+'></label>'}).join("")+'<button class="btn" style="background:#c62828;margin-top:14px" id="del">অ্যাকাউন্ট ডিলিট করো</button>');
+sx.querySelectorAll("[data-s]").forEach(function(b){b.onchange=function(){toast(ST[b.dataset.s][2])}});
+$("#del").onclick=function(){toast("ডিলিট করছ? ২ ঘণ্টা পরে ফিরে এসে বলবে ‘হ্যাক হয়েছিল’।")};
+var FQ=[["পাসওয়ার্ড ভুলে গেছি, কী করব?","ভালোই তো, মনে রাখার ঝামেলা কমল। নতুন একটা বানাও, ওটাও ভুলবে।"],["আমার অ্যাকাউন্ট হ্যাক হয়েছে!","পাসওয়ার্ডটা ‘123456’ না রাখলে হয়তো হতো না।"],["লাইক কম পাচ্ছি কেন?","কনটেন্টের দোষ। অ্যালগরিদম নিরপরাধ।"],["Fakebook কি ফ্রি?","হ্যাঁ। তুমি প্রোডাক্ট, তাই দাম দিতে হয় না।"],["কাস্টমার কেয়ারের নম্বর কী?","০০০-০০০-০০০। নম্বরটি ব্যস্ত আছে। চিরকাল।"]];
+sec("help","🆘 সাহায্য কেন্দ্র","সমস্যা নিয়ে আসো, সমাধান নিয়ে যেয়ো না।",FQ.map(function(f){return'<details><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>'}).join(""));
+sec("privacy","🔒 গোপনীয়তা নীতি","কেউ পড়ে না, তবু ‘সম্মত’ চাপা হয়।",'<div class="legal"><p>১. আমরা তোমার তথ্য সংগ্রহ করি না। কারণ তুমি নিজেই সব দিয়ে রেখেছ।</p><p>২. তোমার ছবি, লোকেশন আর অর্ধেক জীবন আমরা নিরাপদে রাখি (আমাদের কাছে)।</p><p>৩. এই নীতি যেকোনো সময় বদলাতে পারে। জানাব না।</p><p>৪. তুমি এটা পড়োনি, তবু সম্মত বলেছ। আইন তোমার পক্ষে নেই।</p><p class="mut">সর্বশেষ হালনাগাদ: কখনো না। এটা প্যারোডি, সত্যিকারের আইনি নথি না।</p></div>');
+var HOR=["মেষ: আজ ফোন চার্জে দেবে, কিন্তু চার্জার খুঁজে পাবে না।","বৃষ: আজ টাকা খরচ করবে না, কারণ টাকাই নেই।","মিথুন: আজ কেউ তোমাকে মেসেজ দেবে, আসলে ভুল নম্বর।","কর্কট: আজ পুরনো ক্রাশ লাইক দেবে। বাকি ৫০০ জনকেও দিয়েছে।","সিংহ: আজ ভাগ্য সুপ্রসন্ন। শুধু ভাগ্য জানে না।","কন্যা: আজ পড়তে বসবে। ৫ মিনিট পর ফেসবুক খুলবে।"];
+var STA=["Feeling confused 😵 (আজীবন)","আজ কিছু করিনি, তবু ক্লান্ত।","ব্যস্ত আছি, তাই ফেসবুকে পোস্ট করছি।","ডায়েটে আছি। সোমবার থেকে।","যে আমাকে চিনে না, সে ভাগ্যবান।","নতুন সম্পর্ক: ওয়াইফাইয়ের সাথে কমিটেড।"];
+var rx=sec("roast","🔥 আমাকে রোস্ট করো","নাম লেখো, সাহস থাকলে।",'<input id="rin" placeholder="তোমার নাম বা যা খুশি লেখো" aria-label="নাম"><div class="rr"><button class="btn" id="rb">রোস্ট করো 🔥</button><button class="btn" id="hb" style="background:#6a1b9a">আজকের রাশিফল 🔮</button><button class="btn" id="sb" style="background:#00695c">ফেক স্ট্যাটাস 📝</button></div><div id="rout" aria-live="polite"></div>');
+function ro(t){var o=$("#rout");o.style.display="block";o.textContent=t}
+$("#rb").onclick=function(){var v=$("#rin").value.trim().slice(0,100)||"তুমি";ro("ভাবছি… (তোমার মতো কঠিন কেস তো!)");ask("আমাকে রোস্ট করো: "+v,"Fakebook বট",[],"roast").then(ro)};
+$("#hb").onclick=function(){ro("🔮 "+rnd(HOR))};$("#sb").onclick=function(){ro("📝 "+rnd(STA))};
+$("#rin").onkeydown=function(e){if(e.key==="Enter")$("#rb").click()};
+var MENU=[["profile","👤","আমার প্রোফাইল"],["roast","🔥","আমাকে রোস্ট করো"],["friends","👥","বন্ধুরা (যাদের চিনি না)"],["groups","👪","গ্রুপ (মিউট করা)"],["events","📅","ইভেন্ট (যাব না)"],["memories","🕰️","পুরনো লজ্জা"],["saved","🔖","সেভ করে ভুলে যাওয়া"],["birthdays","🎂","জন্মদিন"],["games","🎮","গেমস"],["notifs","🔔","নোটিফিকেশন"],["settings","⚙️","সেটিংস"],["help","🆘","সাহায্য কেন্দ্র"],["privacy","🔒","গোপনীয়তা নীতি"],["about","ℹ️","আমাদের সম্পর্কে"]];
+$("#lm").innerHTML=MENU.map(function(m){return'<button class="mi" data-v="'+m[0]+'"><span>'+m[1]+'</span>'+m[2]+'</button>'}).join("");
+$("#mn").onclick=function(){$("#lm").classList.toggle("open")};
+$("#pk").onclick=closePop;$("#pn").onclick=function(){toast(rnd(ROASTS))};
+$("#pop").onclick=function(e){if(e.target===this)closePop()};
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closePop()});
+var rs=0;function startRoasts(){if(rs)return;rs=1;setInterval(function(){var a=document.activeElement;if(!document.hidden&&$("#pop").hidden&&!(a&&a.tagName==="INPUT"))toast(rnd(ROASTS))},50000)}
+</script>
+</body>
+</html>
